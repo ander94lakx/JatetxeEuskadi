@@ -61,16 +61,18 @@
         }
         
         #linkLogin:hover, #linkRegistro:hover {
-            font-size: 115%;
+            font-size: 100%;
             text-decoration: none;
+            color: #00cc6f;
         }
         
         #linkLogin, #linkRegistro {
             text-decoration: none;
             margin-top: 10px;
             margin-right: 20px;
-            color: #00cc6f;
+            color: #ffffff;
             float: right;
+            transition: color 0.25s ease-out;
         }
        
         footer {
