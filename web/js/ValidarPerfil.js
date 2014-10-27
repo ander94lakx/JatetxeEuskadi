@@ -16,7 +16,6 @@ function iniciar() {
 function cargarDatos() {
     usuarioActual = JSON.parse(localStorage.getItem(sessionStorage.getItem("usuarioActual")));
     document.getElementById("dni").value = usuarioActual.dni;
-    document.getElementById("sexo").value = usuarioActual.sexo;
     document.getElementById("nombre").value =  usuarioActual.nombre;
     document.getElementById("apellido").value =  usuarioActual.apellido;
     document.getElementById("contrasena").value = usuarioActual.contrasena;
@@ -27,6 +26,10 @@ function cargarDatos() {
     document.getElementById("dia").value = usuarioActual.dia;
     document.getElementById("mes").value =  usuarioActual.mes; 
     document.getElementById("ano").value = usuarioActual.ano;
+    if(usuarioActual.sexo == "h")
+        document.getElementById("h").checked = true;
+    else
+        document.getElementById("M").checked = true;
 }
     
 function validarDatos(e) {
@@ -72,7 +75,7 @@ function ponerEnDireccion() {
 function guardarUsuario() {
     var usuario = {
         dni: document.getElementById("dni").value,
-        sexo: document.getElementById("sexo").value,
+        sexo: obtenerSexo(),
         nombre: document.getElementById("nombre").value,
         apellido: document.getElementById("apellido").value,
         contrasena: document.getElementById("contrasena").value,
@@ -95,6 +98,15 @@ function guardarUsuario() {
         }
     }
     
+}
+
+// Pequeña funcion para obtener el sexo
+function obtenerSexo() {
+    if(document.getElementById("sexo")[0].checked) {
+        return "h";
+    } else { 
+        return "m";
+    }
 }
 
 // Metodos relacionados con la validacion de los datos

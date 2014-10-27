@@ -41,7 +41,7 @@ function validarDNI() {
 function registrarUsuario() {
     var usuario = {
         dni: document.getElementById("dni").value,
-        sexo: document.getElementById("sexo").value,
+        sexo: obtenerSexo(),
         nombre: document.getElementById("nombre").value,
         apellido: document.getElementById("apellido").value,
         contrasena: document.getElementById("contrasena").value,
@@ -64,5 +64,14 @@ function registrarUsuario() {
     
     if(registrar) {
         localStorage.setItem(usuario.email, JSON.stringify(usuario));
+    }
+}
+
+// Pequeña funcion para obtener el sexo
+function obtenerSexo() {
+    if(document.getElementById("sexo")[0].checked) {
+        return "h";
+    } else { 
+        return "m";
     }
 }
