@@ -38,7 +38,8 @@ function loguearUsuario() {
     }
     
     if(logueado) {
-        // 
+        sessionStorage.removeItem("usuarioActual");
+        sessionStorage.setItem("usuarioActual", email);
     } else {
         alert("El usuario no existe");
     }
