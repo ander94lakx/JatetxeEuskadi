@@ -1,4 +1,5 @@
 window.addEventListener("load", iniciar, false);
+window.addEventListener("onload", cargarDatos, false);
 
 function iniciar() {
     // Eventos relacionados con el formulario de registro
@@ -10,11 +11,12 @@ function iniciar() {
     // Eventos relacionados con la geolocalizacion
     document.getElementById('obtener').addEventListener('click', recuperarLocalizacion, false);
     // Llamada al metodo para obtener los datos del localStorage y mostrarlos en los campos del perfil
-    cargarDatos();
+    
 }
 
 function cargarDatos() {
-    usuarioActual = JSON.parse(localStorage.getItem(sessionStorage.getItem("usuarioActual")));
+    var usuarioActual = JSON.parse(localStorage.getItem(sessionStorage.getItem("usuarioActual")));
+    document.getElementById("email").value = usuarioActual.email,
     document.getElementById("dni").value = usuarioActual.dni;
     document.getElementById("nombre").value =  usuarioActual.nombre;
     document.getElementById("apellido").value =  usuarioActual.apellido;
@@ -29,7 +31,7 @@ function cargarDatos() {
     if(usuarioActual.sexo == "h")
         document.getElementById("h").checked = true;
     else
-        document.getElementById("M").checked = true;
+        document.getElementById("m").checked = true;
 }
     
 function validarDatos(e) {
@@ -74,6 +76,7 @@ function ponerEnDireccion() {
 
 function guardarUsuario() {
     var usuario = {
+        email: document.getElementById("email").value,
         dni: document.getElementById("dni").value,
         sexo: obtenerSexo(),
         nombre: document.getElementById("nombre").value,
@@ -102,7 +105,7 @@ function guardarUsuario() {
 
 // Pequeña funcion para obtener el sexo
 function obtenerSexo() {
-    if(document.getElementById("sexo")[0].checked) {
+    if(document.getElementByid("h").checked) {
         return "h";
     } else { 
         return "m";
