@@ -9,6 +9,24 @@ function iniciar() {
     document.getElementById('archivo').addEventListener('change', cargar, false);
     // Eventos relacionados con la geolocalizacion
     document.getElementById('obtener').addEventListener('click', recuperarLocalizacion, false);
+    // Llamada al metodo para obtener los datos del localStorage y mostrarlos en los campos del perfil
+    cargarDatos();
+}
+
+function cargarDatos() {
+    usuarioActual = JSON.parse(localStorage.getItem(sessionStorage.getItem("usuarioActual")));
+    document.getElementById("dni").value = usuarioActual.dni;
+    document.getElementById("sexo").value = usuarioActual.sexo;
+    document.getElementById("nombre").value =  usuarioActual.nombre;
+    document.getElementById("apellido").value =  usuarioActual.apellido;
+    document.getElementById("contrasena").value = usuarioActual.contrasena;
+    document.getElementById("provincia").value = usuarioActual.provincia;
+    document.getElementById("ciudad").value = usuarioActual.ciudad;
+    document.getElementById("codigopostal").value = usuarioActual.codigopostal;
+    document.getElementById("telefono").value = usuarioActual.telefono;
+    document.getElementById("dia").value = usuarioActual.dia;
+    document.getElementById("mes").value =  usuarioActual.mes; 
+    document.getElementById("ano").value = usuarioActual.ano;
 }
     
 function validarDatos(e) {
