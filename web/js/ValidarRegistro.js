@@ -60,7 +60,6 @@ function registrarUsuario() {
             registrar = false;
         }
     }
-    
     if(registrar) {
         localStorage.setItem(usuario.email, JSON.stringify(usuario));
     }
