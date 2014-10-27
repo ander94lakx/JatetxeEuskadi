@@ -62,6 +62,6 @@ function registrarUsuario() {
     }
     
     if(registrar) {
-        localStorage.setItem(usuario.email, usuario);
+        localStorage.setItem(usuario.email, JSON.stringify(usuario));
     }
 }

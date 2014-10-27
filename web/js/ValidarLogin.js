@@ -24,7 +24,8 @@ function loguearUsuario() {
 
     for(var f = 0; f < localStorage.length; f++){
         var clave = localStorage.key(f);
-        var valor = localStorage.getItem(clave);
+        var valor = JSON.parse(localStorage.getItem(clave));
+        
         if(clave == email) {
             if(valor.contrasena == contrasena) {
                 logueado = true;

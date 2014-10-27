@@ -65,14 +65,14 @@ function guardarUsuario() {
     usuario.dia = document.getElementById("dia").value;
     usuario.mes = document.getElementById("mes").value;
     usuario.ano = document.getElementById("ano").value;
-    usuario.imagen = null;
-    usuario.direccion = null;
+    usuario.imagen = null; // TO-DO
+    usuario.direccion = null; // TO-DO
     
     for(var f = 0; f < localStorage.length; f++){
         var clave = localStorage.key(f);
-        var valor = localStorage.getItem(clave);
         if(usuario.email == clave) {
-            localStorage.setItem(clave, usuario);
+            localStorage.removeItem(usuario.email);
+            localStorage.setItem(usuario.email, usuario);
         }
     }
     
