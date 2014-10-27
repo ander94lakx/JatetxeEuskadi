@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/estilo.css" type="text/css" media="all">
+        <script type="text/javascript" src="../js/ValidarRegistro.js"></script>
+    </head>
+    <body id="bodyRegistro">
+        <header id="headerRegistro">
+            <br>
+            <h1 id="titulo">Euskal Jatetxe</h1>    
+        </header>
+        <nav id="navRegistro">
+            
+        </nav>
+        <br>
+        <section id="sectionRegistro">
+            <div id="webRegistro">
+   
+                <div id="divRegistro">
+                    <fieldset id="fieldsetRegistro">
+                        <!--<legend>Registro</legend>-->
+                        <form name="registro" id="registro" method="get">
+
+                            <label class="camposDeReg">Eres: *</label>
+                            <input type="radio" name="sexo" value="Hombre" required="required">Hombre
+                            <input type="radio" name="sexo" value="Mujer">Mujer<br><br>
+
+                            <label class="camposDeReg">Apellido: *</label>
+                            <input type="text" name="apellido" id="apellido" 
+                                   pattern="[A-Za-z]{2,20}" title="El apellido no es válido (tiene que ser una longitud entre 2 y 20 caracteres)" 
+                                   required="required"><br><br>
+
+                            <label class="camposDeReg">Nombre: *</label>
+                            <input type="text" name="nombre" id="nombre" 
+                                   pattern="[A-Za-z]{2,20}" 
+                                   title="El nombre no es válido (tiene que ser una longitud entre 2 y 20 caracteres)" 
+                                   required="required"><br><br>
+                            
+                            <label class="camposDeReg">DNI: *</label>
+                            <input type="text" name="dni" id="dni" 
+                                   pattern="[0-9]{8}[a-zA-Z]{1}" 
+                                   title="El DNI no tiene un formato válido" 
+                                   required="required"><br><br>
+
+                            <label class="camposDeReg">Email: <a>*</a></label>
+                            <input type="email" name="email" id="email" 
+                                   pattern="[A-Za-z][A-Za-z0-9_]*@[A-Za-z0-9_]+\.[A-Za-z0-9_.]+[A-za-z]"
+                                   title="El email introducido no tiene un formato de email valido"
+                                   required="required" ><br><br>
+
+                            <label class="camposDeReg">Contraseña: *</label>
+                            <input type="password" name="contrasena" id="contrasena" 
+                                   pattern="[a-zA-Z0-9]{6,25}" 
+                                   title="La contrasena tiene que tener entre 6 y 25 caracteres (solo caracteres alfanuméricos"
+                                   required="required"><br><br>
+
+                            <label class="camposDeReg">Provincia: *</label>
+                            <select name="provincia" id="provincia" required="required">
+                                <option selected value="">Elige una opción</option>
+                                <option value="1">Álava</option>
+                                <option value="2">Guipuzcoa</option>
+                                <option value="3">Vizcaya</option>
+                            </select><br><br>
+
+                            <label class="camposDeReg">Ciudad:</label>
+                            <select name="ciudad" id="ciudad">
+                                <option selected value="">Elige una opción</option>
+                                <option value="1">Gasteiz</option>
+                                <option value="2">Donosti</option>
+                                <option value="3">Bilbo</option>
+                            </select><br><br>
+
+                            <label class="camposDeReg">Código Postal: *</label>
+                            <input type="text" name="codigopostal" id="codigopostal" required="required"
+                                   pattern="[0-9]{5}" 
+                                   title="El código postal no es válido"><br><br>
+
+                            <label class="camposDeReg">Telefono: *</label>
+                            <input type="tel" name="telefono" id="telefono" required="required"><br><br>
+
+                            Los campos marcados con * son obligatorios<br><br>
+
+                            <input type="submit" name="botonRegistrar" id="botonRegistrar" value="Regístrate">
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+        </section>
+<!--        <footer id="footerRegistro">
+            <br>
+            Creado por: Julen Aristimuño y Ander Granado
+        </footer>-->
+    </body>
+</html>

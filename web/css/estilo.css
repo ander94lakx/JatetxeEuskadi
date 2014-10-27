@@ -1,0 +1,178 @@
+/* ---- PARTES COMUNES ------- */
+        
+        body {
+           font-family: sans-serif;
+           margin-left: 0px;
+           margin-right: 0px;
+           margin-top: 0px;
+           margin-bottom: 0px;
+        }
+
+        /* Parte de la cabecera */
+        
+        header {
+            height: 120px;
+            width: 100%;
+            background-color: #00cc6f; 
+            text-align: center;
+        }
+        
+        nav {
+            background-color: black;
+            height: 40px;
+            width: 100%;
+        }
+        
+        #titulo {
+            margin-top: 20px;
+        }
+        
+        /* Parte de los labels de los registros, perfil, login,... */
+        
+        .camposDeReg {
+            width: 52%;
+            float: left;
+        }
+        
+        fieldset {
+            padding-top: 10px;
+            border:1px solid #666;
+            border-radius: 8px;
+            box-shadow:0 0 10px #666;
+        }
+        
+        legend {
+            border: solid 1px black;
+            float: left;
+            margin-top:-20px;
+        }
+        
+        legend + * {
+            clear:both;
+        }
+        
+        input {
+            font-size: 14px;
+        }
+        
+        input:focus {
+/*            border: 2px;*/
+            background: #F3F3F3;
+        }
+        
+        #linkLogin:hover, #linkRegistro:hover {
+            font-size: 115%;
+            text-decoration: none;
+        }
+        
+        #linkLogin, #linkRegistro {
+            text-decoration: none;
+            margin-top: 10px;
+            margin-right: 20px;
+            color: #00cc6f;
+            float: right;
+        }
+       
+        footer {
+            height: 60px;
+            background-color: black;
+            text-align: center;
+            color: #00cc6f; 
+        }
+        
+        
+/* -------- REGISTRO --------- */
+
+        #webRegistro {
+            margin: 0 auto;
+            padding: 0;
+            display: block;
+            width: 400px;
+        }
+
+        /* Parte del registro */
+
+        #fieldsetRegistro {
+            max-width: 500px;
+        }
+
+        #divRegistro {
+            width: 400px;
+            float: left;
+        }
+        
+        #botonRegistrar {
+            alignment-baseline: middle;
+            alignment-adjust: middle;
+        }
+
+/* -------- LOGIN --------- */
+
+        #webLogin {
+            margin: 0 auto;
+            padding: 0;
+            display: block;
+            width: 400px;
+        }
+        
+        #divLogin {
+            width: 400px;
+            float: left;
+        }
+
+        #fieldsetLogin {
+            max-width: 500px;
+        }
+
+/* -------- INDEX --------- */
+
+/* -------- PERFIL -------- */
+
+        /* Parte del body */
+        
+        #webPerfil {
+            margin: 0 auto;
+           /* margin-left: 50px;
+            margin-right: 50px;*/
+            padding: 0;
+            display: block;
+            width: 1100px;
+        }
+
+        /* Parte de la imagen */
+
+        #caja {
+            margin: 10px;
+            width: 300px;
+            height: 300px;
+            border: 5px dashed gray;
+            border-radius: 8px;
+            background: rgb(230,230,230);
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        #imagen {
+            float: left;
+        }
+
+        #archivo {
+            width: 320px;
+        }
+        
+        /* Parte del perfil */
+        
+        #fieldsetPerfil {
+            max-width: 500px;
+        }
+
+        #divPerfil {
+            width: 400px;
+            float: left;
+            margin-left: 20px;
+        }
+        
+        #localizacion{
+            float: left;
+            margin-left: 20px;
+        }
