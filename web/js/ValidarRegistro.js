@@ -39,16 +39,17 @@ function validarDNI() {
 // Metodos para registrar el registro de un usuario
 
 function registrarUsuario() {
-    var usuario = new Array();
-    //usuario.sexo = document.getElementById("sexo").value;
-    usuario.nombre = document.getElementById("nombre").value;
-    usuario.apellido = document.getElementById("apellido").value;
-    usuario.email = document.getElementById("email").value;
-    usuario.contrasena = document.getElementById("contrasena").value;
-    usuario.provincia = document.getElementById("provincia").value;
-    usuario.ciudad = document.getElementById("ciudad").value;
-    usuario.codigopostal = document.getElementById("codigopostal").value;
-    usuario.telefono = document.getElementById("telefono").value;
+    var usuario = {
+        dni: document.getElementById("dni").value,
+        sexo: document.getElementById("sexo").value,
+        nombre: document.getElementById("nombre").value,
+        apellido: document.getElementById("apellido").value,
+        contrasena: document.getElementById("contrasena").value,
+        provincia: document.getElementById("provincia").value,
+        ciudad: document.getElementById("ciudad").value,
+        codigopostal: document.getElementById("codigopostal").value,
+        telefono: document.getElementById("telefono").value,
+    };
     
     registrar = true;
     
@@ -60,6 +61,7 @@ function registrarUsuario() {
             registrar = false;
         }
     }
+    
     if(registrar) {
         localStorage.setItem(usuario.email, JSON.stringify(usuario));
     }

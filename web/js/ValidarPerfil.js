@@ -70,21 +70,22 @@ function ponerEnDireccion() {
 // Metodo para guardar los cambios del usuario
 
 function guardarUsuario() {
-    var usuario = new Array();
-    usuario.dni = document.getElementById("dni").value;
-    usuario.sexo = document.getElementById("sexo").value;
-    usuario.nombre = document.getElementById("nombre").value;
-    usuario.apellido = document.getElementById("apellido").value;
-    usuario.contrasena = document.getElementById("contrasena").value;
-    usuario.provincia = document.getElementById("provincia").value;
-    usuario.ciudad = document.getElementById("ciudad").value;
-    usuario.codigopostal = document.getElementById("codigopostal").value;
-    usuario.telefono = document.getElementById("telefono").value;
-    usuario.dia = document.getElementById("dia").value;
-    usuario.mes = document.getElementById("mes").value;
-    usuario.ano = document.getElementById("ano").value;
-    usuario.imagen = null; // TO-DO
-    usuario.direccion = null; // TO-DO
+    var usuario = {
+        dni: document.getElementById("dni").value,
+        sexo: document.getElementById("sexo").value,
+        nombre: document.getElementById("nombre").value,
+        apellido: document.getElementById("apellido").value,
+        contrasena: document.getElementById("contrasena").value,
+        provincia: document.getElementById("provincia").value,
+        ciudad: document.getElementById("ciudad").value,
+        codigopostal: document.getElementById("codigopostal").value,
+        telefono: document.getElementById("telefono").value,
+        dia: document.getElementById("dia").value,
+        mes: document.getElementById("mes").value,
+        ano: document.getElementById("ano").value,
+        imagen: null, // TO-DO
+        direccion: null // TO-DO
+    };
     
     for(var f = 0; f < localStorage.length; f++){
         var clave = localStorage.key(f);
