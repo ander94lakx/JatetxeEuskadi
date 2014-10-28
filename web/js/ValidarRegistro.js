@@ -56,7 +56,6 @@ function registrarUsuario() {
     
     for(var f = 0; f < localStorage.length; f++){
         var clave = localStorage.key(f);
-        var valor = localStorage.getItem(clave);
         if(usuario.email == clave) {
             alert("El usuario ya existe");
             registrar = false;
