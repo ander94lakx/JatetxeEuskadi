@@ -76,13 +76,15 @@
             transition: color 0.25s ease-out;
             transition: font-size 0.25s ease-out;
         }
-       
+        
         footer {
-            clear: both;
+            position: relative;
+            clear: left;
             height: 60px;
             background-color: black;
             text-align: center;
             color: #00cc6f; 
+            
         }
         
         
@@ -157,7 +159,7 @@
             background-size: 100%;
         }
 
-        #imagen {
+        #imagen { 
             float: left;
         }
 
