@@ -23,10 +23,10 @@
             width: 100%;
         }
         
-        #titulo {
+        /*#titulo {
             margin-top: 20px;
         }
-        
+        */
         /* Parte de los labels de los registros, perfil, login,... */
         
         .camposDeReg {
@@ -76,6 +76,7 @@
         }
        
         footer {
+            clear: both;
             height: 60px;
             background-color: black;
             text-align: center;
