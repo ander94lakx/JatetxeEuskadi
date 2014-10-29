@@ -60,13 +60,13 @@
             background: #F3F3F3;
         }
         
-        #linkLogin:hover, #linkRegistro:hover {
+        .linksDelNav:hover {
             font-size: 100%;
             text-decoration: none;
             color: #00cc6f;
         }
         
-        #linkLogin, #linkRegistro {
+        .linksDelNav {
             text-decoration: none;
             margin-top: 10px;
             margin-right: 20px;
