@@ -14,7 +14,7 @@
             height: 120px;
             width: 100%;
             background-color: #00cc6f; 
-            text-align: center;
+            text-align: left;
         }
         
         nav {
@@ -64,6 +64,7 @@
             font-size: 100%;
             text-decoration: none;
             color: #00cc6f;
+            font-size: 110%;
         }
         
         .linksDelNav {
@@ -73,6 +74,7 @@
             color: #ffffff;
             float: right;
             transition: color 0.25s ease-out;
+            transition: font-size 0.25s ease-out;
         }
        
         footer {
