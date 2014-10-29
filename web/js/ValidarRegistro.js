@@ -45,7 +45,7 @@ function registrarUsuario() {
         sexo: obtenerSexo(),
         nombre: document.getElementById("nombre").value,
         apellido: document.getElementById("apellido").value,
-        contrasena: document.getElementById("contrasena").value,
+        contrasena: obtenerHash(document.getElementById("contrasena").value),
         provincia: document.getElementById("provincia").value,
         ciudad: document.getElementById("ciudad").value,
         codigopostal: document.getElementById("codigopostal").value,
@@ -74,4 +74,18 @@ function obtenerSexo() {
     } else { 
         return "m";
     }
+}
+
+// Funcion para obtener el hash de la contraseña
+function obtenerHash(cadena) {
+    var hash = 0;
+    var i, chr, len;
+    if(cadena.length == 0)
+        return hash;
+    for(i = 0, len = cadena.length; i < len; i++) {
+        chr = cadena.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |=0;
+    }
+    return hash;
 }

@@ -20,7 +20,7 @@ function cargarDatos() {
     document.getElementById("dni").value = usuarioActual.dni;
     document.getElementById("nombre").value =  usuarioActual.nombre;
     document.getElementById("apellido").value =  usuarioActual.apellido;
-    document.getElementById("contrasena").value = usuarioActual.contrasena;
+    document.getElementById("contrasena").value = "";
     document.getElementById("provincia").value = usuarioActual.provincia;
     document.getElementById("ciudad").value = usuarioActual.ciudad;
     document.getElementById("codigopostal").value = usuarioActual.codigopostal;
@@ -75,13 +75,18 @@ function ponerEnDireccion() {
 // Metodo para guardar los cambios del usuario
 
 function guardarUsuario() {
+    var contr;
+    if(document.getElementById("contrasena").value == "")
+        contr = localStorage.getItem(sessionStorage.getItem("usuarioActual")).contrasena;
+    else
+        contr = obtenerHash(document.getElementById("contrasena").value);
     var usuario = {
         email: document.getElementById("email").value,
         dni: document.getElementById("dni").value,
         sexo: obtenerSexo(),
         nombre: document.getElementById("nombre").value,
         apellido: document.getElementById("apellido").value,
-        contrasena: document.getElementById("contrasena").value,
+        contrasena: contr,
         provincia: document.getElementById("provincia").value,
         ciudad: document.getElementById("ciudad").value,
         codigopostal: document.getElementById("codigopostal").value,
@@ -100,7 +105,6 @@ function guardarUsuario() {
             localStorage.setItem(usuario.email, usuario);
         }
     }
-    
 }
 
 // Pequeña funcion para obtener el sexo
@@ -197,3 +201,16 @@ function permitirDrop(e) {
     e.preventDefault();
 }
 
+// Funcion para obtener el hash de la contraseña
+function obtenerHash(cadena) {
+    var hash = 0;
+    var i, chr, len;
+    if(cadena.length == 0)
+        return hash;
+    for(i = 0, len = cadena.length; i < len; i++) {
+        chr = cadena.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |=0;
+    }
+    return hash;
+}
