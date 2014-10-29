@@ -39,6 +39,7 @@ function validarDNI() {
 // Metodos para registrar el registro de un usuario
 
 function registrarUsuario() {
+    // Se crea ej JSON con la info del usuario
     var usuario = {
         email: document.getElementById("email").value,
         dni: document.getElementById("dni").value,
@@ -51,9 +52,8 @@ function registrarUsuario() {
         codigopostal: document.getElementById("codigopostal").value,
         telefono: document.getElementById("telefono").value,
     };
-    
     registrar = true;
-    
+    // Esto comprueba si el usuario ya existe
     for(var f = 0; f < localStorage.length; f++){
         var clave = localStorage.key(f);
         if(usuario.email == clave) {
@@ -61,7 +61,7 @@ function registrarUsuario() {
             registrar = false;
         }
     }
-    
+    // Y si no existe lo registra
     if(registrar) {
         localStorage.setItem(usuario.email, JSON.stringify(usuario));
     }

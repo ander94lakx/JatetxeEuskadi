@@ -11,7 +11,6 @@ function iniciar() {
     // Eventos relacionados con la geolocalizacion
     document.getElementById('obtener').addEventListener('click', recuperarLocalizacion, false);
     // Llamada al metodo para obtener los datos del localStorage y mostrarlos en los campos del perfil
-    
 }
 
 function cargarDatos() {
@@ -20,7 +19,7 @@ function cargarDatos() {
     document.getElementById("dni").value = usuarioActual.dni;
     document.getElementById("nombre").value =  usuarioActual.nombre;
     document.getElementById("apellido").value =  usuarioActual.apellido;
-    document.getElementById("contrasena").value = "";
+    document.getElementById("contrasena").value = ""; // no se muestra nada ya que no se almacena la contraseña
     document.getElementById("provincia").value = usuarioActual.provincia;
     document.getElementById("ciudad").value = usuarioActual.ciudad;
     document.getElementById("codigopostal").value = usuarioActual.codigopostal;
@@ -75,11 +74,13 @@ function ponerEnDireccion() {
 // Metodo para guardar los cambios del usuario
 
 function guardarUsuario() {
+    // Esta primera parte comprueba si se desea cambiar la contrasena y actua en consecuencia
     var contr;
     if(document.getElementById("contrasena").value == "")
         contr = localStorage.getItem(sessionStorage.getItem("usuarioActual")).contrasena;
     else
         contr = obtenerHash(document.getElementById("contrasena").value);
+    // Se crea ej JSON con la info del usuario
     var usuario = {
         email: document.getElementById("email").value,
         dni: document.getElementById("dni").value,
@@ -97,14 +98,10 @@ function guardarUsuario() {
         imagen: null, // TO-DO
         direccion: null // TO-DO
     };
-    
-    for(var f = 0; f < localStorage.length; f++){
-        var clave = localStorage.key(f);
-        if(usuario.email == clave) {
-            localStorage.removeItem(usuario.email);
-            localStorage.setItem(usuario.email, usuario);
-        }
-    }
+    // Y se guarda la informacion, eliminando antes la antigua
+    localStorage.removeItem(usuario.email);
+    localStorage.setItem(usuario.email, usuario);
+
 }
 
 // Pequeña funcion para obtener el sexo
