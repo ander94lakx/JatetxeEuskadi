@@ -17,6 +17,10 @@
             text-align: left;
         }
         
+        #logo {
+            height: 90px;
+        }
+        
         nav {
             background-color: black;
             height: 40px;
