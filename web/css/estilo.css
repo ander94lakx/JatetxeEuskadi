@@ -27,10 +27,6 @@
             width: 100%;
         }
         
-        /*#titulo {
-            margin-top: 20px;
-        }
-        */
         /* Parte de los labels de los registros, perfil, login,... */
         
         .camposDeReg {
@@ -136,6 +132,62 @@
         }
 
 /* -------- INDEX --------- */
+
+#navIndex{
+    margin-bottom: 0px;
+}
+
+#sectionIndex{
+    margin-top: 0px;
+    width: 100%;
+    height: 500px;
+}
+
+#divImagenes{
+  
+    width: 100%;
+    height: 500px;
+    text-align: center;
+    vertical-align: middle;
+    background-image: url("../img/ODVO_Manish_13.jpg");
+    
+}
+#texto{
+    color: #ffffff;
+}
+
+#gasteizN{
+    margin-right: 50px;
+    content: url("../img/gasteiz-normal.png");
+    height: 150px;
+    width: 150px;
+}
+
+#gasteizN:hover{
+    content: url("../img/gasteiz-cambiado.png");
+}
+
+#bilbaoN{
+    margin-right: 50px;
+    content: url("../img/bilbo-normal.png");
+    height: 150px;
+    width: 150px;
+}
+
+#bilbaoN:hover{
+    content: url("../img/bilbo-cambiado.png");
+}
+
+#donostiN{
+    content: url("../img/donosti-normal.png");
+    height: 150px;
+    width: 150px;
+}
+
+#donostiN:hover{
+    content: url("../img/donosti-cambiado.png");
+}
+
 
 /* -------- PERFIL -------- */
 
