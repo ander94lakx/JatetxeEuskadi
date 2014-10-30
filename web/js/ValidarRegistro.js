@@ -3,11 +3,11 @@ window.addEventListener("load", iniciar, false);
 function iniciar() {
     // Eventos relacionados con el formulario de registro
     document.getElementById("botonRegistrar").addEventListener('click',validarDatos, false);
-    // Validacion en tiempo real
     // Eventos relacionados con la imagen
     document.getElementById('caja').addEventListener('dragover', permitirDrop, false);
     document.getElementById('caja').addEventListener('drop', drop, false);
     document.getElementById('archivo').addEventListener('change', cargar, false);
+    // Validacion en tiempo real
     document.registro.addEventListener("invalid", validacion, true);
     document.registro.addEventListener("input", controlar, false);
 }
