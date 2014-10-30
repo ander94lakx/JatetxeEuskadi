@@ -28,6 +28,10 @@
             width: 100%;
         }
         
+        section{
+            margin-bottom: 10px;
+        }
+        
         /* Parte de los labels de los registros, perfil, login,... */
         
         .camposDeReg {
@@ -85,7 +89,6 @@
             background-color: black;
             text-align: center;
             color: #00cc6f; 
-            
         }
         
         
@@ -171,11 +174,15 @@
     color: #ffffff;
 }
 
+#mensaje{
+    color: deeppink;
+}
+
 #gasteizN{
-    margin-right: 50px;
+    margin-right: 70px;
     content: url("../img/gasteiz-normal.png");
-    height: 150px;
-    width: 150px;
+    height: 125px;
+    width: 125px;
 }
 
 #gasteizN:hover{
@@ -183,10 +190,10 @@
 }
 
 #bilbaoN{
-    margin-right: 50px;
+    margin-right: 70px;
     content: url("../img/bilbo-normal.png");
-    height: 150px;
-    width: 150px;
+    height: 125px;
+    width: 125px;
 }
 
 #bilbaoN:hover{
@@ -195,8 +202,8 @@
 
 #donostiN{
     content: url("../img/donosti-normal.png");
-    height: 150px;
-    width: 150px;
+    height: 125px;
+    width: 125px;
 }
 
 #donostiN:hover{
