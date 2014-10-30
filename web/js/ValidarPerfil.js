@@ -10,7 +10,9 @@ function iniciar() {
     document.getElementById('archivo').addEventListener('change', cargar, false);
     // Eventos relacionados con la geolocalizacion
     document.getElementById('obtener').addEventListener('click', recuperarLocalizacion, false);
-    // Llamada al metodo para obtener los datos del localStorage y mostrarlos en los campos del perfil
+    // Validacion en tiempo real
+    document.perfil.addEventListener("invalid", validacion, true);
+    document.perfil.addEventListener("input", controlar, false);
 }
 
 function cargarDatos() {
@@ -210,4 +212,19 @@ function obtenerHash(cadena) {
         hash |=0;
     }
     return hash;
+}
+
+//Se controla en tiempo real los cambios en los inputs
+function controlar(evento) {
+    var elemento = evento.target;
+    if (elemento.validity.valid) {
+        elemento.style.borderColor = '#64FE2E';
+    } else {
+        elemento.style.borderColor = '#FF0000';
+    }
+}
+
+function validacion(evento) {
+    var elemento = evento.target;
+    elemento.style.borderColor = '#FF0000';
 }

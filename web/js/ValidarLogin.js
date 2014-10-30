@@ -3,6 +3,9 @@ window.addEventListener("load", iniciar, false);
 function iniciar() {
     // Eventos relacionados con el formulario de registro
     document.getElementById("botonEntrar").addEventListener('click',validarDatos, false);
+    // Validacion en tiempo real
+    document.perfil.addEventListener("invalid", validacion, true);
+    document.perfil.addEventListener("input", controlar, false);
 }
 
 function validarDatos(e) {
@@ -57,4 +60,19 @@ function obtenerHash(cadena) {
         hash |=0;
     }
     return hash;
+}
+
+//Se controla en tiempo real los cambios en los inputs
+function controlar(evento) {
+    var elemento = evento.target;
+    if (elemento.validity.valid) {
+        elemento.style.borderColor = '#64FE2E';
+    } else {
+        elemento.style.borderColor = '#FF0000';
+    }
+}
+
+function validacion(evento) {
+    var elemento = evento.target;
+    elemento.style.borderColor = '#FF0000';
 }
