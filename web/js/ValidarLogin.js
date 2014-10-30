@@ -4,8 +4,8 @@ function iniciar() {
     // Eventos relacionados con el formulario de registro
     document.getElementById("botonEntrar").addEventListener('click',validarDatos, false);
     // Validacion en tiempo real
-    document.perfil.addEventListener("invalid", validacion, true);
-    document.perfil.addEventListener("input", controlar, false);
+    document.login.addEventListener("invalid", validacion, true);
+    document.login.addEventListener("input", controlar, false);
 }
 
 function validarDatos(e) {
