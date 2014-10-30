@@ -172,6 +172,7 @@
 }
 #texto{
     color: #ffffff;
+    text-shadow: 0.1em 0.1em #666;
 }
 
 #mensaje{
