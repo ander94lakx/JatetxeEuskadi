@@ -19,6 +19,7 @@
         
         #logo {
             height: 110px;
+            content: url("../img/logotipo.png")
         }
         
         nav {
@@ -94,10 +95,25 @@
             margin: 0 auto;
             padding: 0;
             display: block;
-            width: 400px;
+            width: 800px;
         }
-
+  
         /* Parte del registro */
+        
+        #cajaRe{
+            margin: 10px;
+            width: 300px;
+            height: 300px;
+            border: 5px dashed gray;
+            border-radius: 8px;
+            background: rgb(230,230,230);
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        
+        #imagenRe{
+            float: left;
+        }
 
         #fieldsetRegistro {
             max-width: 500px;
@@ -134,11 +150,10 @@
 /* -------- INDEX --------- */
 
 #navIndex{
-    margin-bottom: 0px;
 }
 
 #sectionIndex{
-    margin-top: 0px;
+    margin: 0;
     width: 100%;
     height: 500px;
 }
