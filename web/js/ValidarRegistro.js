@@ -4,6 +4,10 @@ function iniciar() {
     // Eventos relacionados con el formulario de registro
     document.getElementById("botonRegistrar").addEventListener('click',validarDatos, false);
     // Validacion en tiempo real
+    // Eventos relacionados con la imagen
+    document.getElementById('caja').addEventListener('dragover', permitirDrop, false);
+    document.getElementById('caja').addEventListener('drop', drop, false);
+    document.getElementById('archivo').addEventListener('change', cargar, false);
     document.registro.addEventListener("invalid", validacion, true);
     document.registro.addEventListener("input", controlar, false);
 }
@@ -77,6 +81,35 @@ function obtenerSexo() {
     } else { 
         return "m";
     }
+}
+
+// Metodos relacionados con la carga de la imagen
+
+/*
+ *  Notas:
+ *      -> 'caja' es un div que contendrá la imagen
+ *      -> 'archivo' es un input de tipo file par seleccionar la imagen manualmente
+ */
+
+function cargar(e) {
+    var arch = new FileReader();
+    arch.addEventListener('load', leer, false);
+    arch.readAsDataURL(e.target.files[0]);
+}
+
+function leer(e) {
+    document.getElementById('caja').style.backgroundImage = "url('" + e.target.result + "')";
+}
+
+function drop(e) {
+    e.preventDefault();
+    var arch = new FileReader();
+    arch.addEventListener('load', leer, false);
+    arch.readAsDataURL(e.dataTransfer.files[0]);
+}
+
+function permitirDrop(e) {
+    e.preventDefault();
 }
 
 // Funcion para obtener el hash de la contraseña
