@@ -4,9 +4,9 @@ function iniciar() {
     // Eventos relacionados con el formulario de registro
     document.getElementById("botonRegistrar").addEventListener('click',validarDatos, false);
     // Eventos relacionados con la imagen
-    document.getElementById('caja').addEventListener('dragover', permitirDrop, false);
-    document.getElementById('caja').addEventListener('drop', drop, false);
-    document.getElementById('archivo').addEventListener('change', cargar, false);
+    document.getElementById('cajaRe').addEventListener('dragover', permitirDrop, false);
+    document.getElementById('cajaRe').addEventListener('drop', drop, false);
+    document.getElementById('archivoRe').addEventListener('change', cargar, false);
     // Validacion en tiempo real
     document.registro.addEventListener("invalid", validacion, true);
     document.registro.addEventListener("input", controlar, false);
@@ -98,7 +98,7 @@ function cargar(e) {
 }
 
 function leer(e) {
-    document.getElementById('caja').style.backgroundImage = "url('" + e.target.result + "')";
+    document.getElementById('cajaRe').style.backgroundImage = "url('" + e.target.result + "')";
 }
 
 function drop(e) {

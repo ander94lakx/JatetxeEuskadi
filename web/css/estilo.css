@@ -114,6 +114,10 @@
             background-size: 100%;
         }
         
+        #archivoRe {
+            width: 320px;
+        }
+        
         #imagenRe{
             float: left;
         }
@@ -152,64 +156,64 @@
 
 /* -------- INDEX --------- */
 
-#navIndex{
-}
+        #navIndex{
+        }
 
-#sectionIndex{
-    margin: 0;
-    width: 100%;
-    height: 500px;
-}
+        #sectionIndex{
+            margin: 0;
+            width: 100%;
+            height: 500px;
+        }
 
-#divImagenes{
-  
-    width: 100%;
-    height: 500px;
-    text-align: center;
-    vertical-align: middle;
-    background-image: url("../img/ODVO_Manish_13.jpg");
-    
-}
-#texto{
-    color: #ffffff;
-    text-shadow: 0.1em 0.1em #666;
-}
+        #divImagenes{
 
-#mensaje{
-    color: deeppink;
-}
+            width: 100%;
+            height: 500px;
+            text-align: center;
+            vertical-align: middle;
+            background-image: url("../img/ODVO_Manish_13.jpg");
 
-#gasteizN{
-    margin-right: 70px;
-    content: url("../img/gasteiz-normal.png");
-    height: 125px;
-    width: 125px;
-}
+        }
+        #texto{
+            color: #ffffff;
+            text-shadow: 0.1em 0.1em #666;
+        }
 
-#gasteizN:hover{
-    content: url("../img/gasteiz-cambiado.png");
-}
+        #mensaje{
+            color: deeppink;
+        }
 
-#bilbaoN{
-    margin-right: 70px;
-    content: url("../img/bilbo-normal.png");
-    height: 125px;
-    width: 125px;
-}
+        #gasteizN{
+            margin-right: 70px;
+            content: url("../img/gasteiz-normal.png");
+            height: 125px;
+            width: 125px;
+        }
 
-#bilbaoN:hover{
-    content: url("../img/bilbo-cambiado.png");
-}
+        #gasteizN:hover{
+            content: url("../img/gasteiz-cambiado.png");
+        }
 
-#donostiN{
-    content: url("../img/donosti-normal.png");
-    height: 125px;
-    width: 125px;
-}
+        #bilbaoN{
+            margin-right: 70px;
+            content: url("../img/bilbo-normal.png");
+            height: 125px;
+            width: 125px;
+        }
 
-#donostiN:hover{
-    content: url("../img/donosti-cambiado.png");
-}
+        #bilbaoN:hover{
+            content: url("../img/bilbo-cambiado.png");
+        }
+
+        #donostiN{
+            content: url("../img/donosti-normal.png");
+            height: 125px;
+            width: 125px;
+        }
+
+        #donostiN:hover{
+            content: url("../img/donosti-cambiado.png");
+        }
 
 
 /* -------- PERFIL -------- */
