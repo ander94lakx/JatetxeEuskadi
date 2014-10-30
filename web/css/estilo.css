@@ -6,6 +6,7 @@
            margin-right: 0px;
            margin-top: 0px;
            margin-bottom: 0px;
+           min-width: 1280px;
         }
 
         /* Parte de la cabecera */
@@ -66,7 +67,6 @@
         }
         
         .linksDelNav:hover {
-            font-size: 100%;
             text-decoration: none;
             color: #00cc6f;
             font-size: 110%;
@@ -91,6 +91,24 @@
             color: #00cc6f; 
         }
         
+        #licencia {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.25s ease-out;
+            float: left;
+            margin-left: 200px;
+        }
+        
+        #licencia:hover {
+            color: #00cc6f;
+            text-decoration: none;
+        }
+        
+        #autores {
+            color: #666666;
+            float: right;
+            margin-right: 200px;
+        }
         
 /* -------- REGISTRO --------- */
 
