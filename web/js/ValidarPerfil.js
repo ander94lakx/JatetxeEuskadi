@@ -17,9 +17,9 @@ function iniciar() {
 
 function cargarDatos() {
     var usuarioActual = JSON.parse(localStorage.getItem(sessionStorage.getItem("usuarioActual")));
-    document.getElementById("email").value = usuarioActual.email,
+    document.getElementById("email").value = usuarioActual.email ;
     document.getElementById("dni").value = usuarioActual.dni;
-    document.getElementById("nombre").value =  usuarioActual.nombre;
+    document.getElementById("nombre").value = usuarioActual.nombre  ;
     document.getElementById("apellido").value =  usuarioActual.apellido;
     document.getElementById("contrasena").value = ""; // no se muestra nada ya que no se almacena la contraseña
     document.getElementById("provincia").value = usuarioActual.provincia;

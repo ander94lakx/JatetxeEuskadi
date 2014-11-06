@@ -29,9 +29,10 @@
             width: 100%;
         }
         
-        section{
+        /*section{
             margin-bottom: 10px;
         }
+        */
         
         /* Parte de los labels de los registros, perfil, login,... */
         
@@ -91,6 +92,7 @@
             color: #00cc6f; 
         }
         
+        
         #licencia {
             color: #ffffff;
             text-decoration: none;
@@ -117,6 +119,7 @@
             padding: 0;
             display: block;
             width: 800px;
+            height: 470px;
         }
   
         /* Parte del registro */
@@ -161,6 +164,7 @@
             padding: 0;
             display: block;
             width: 400px;
+            height: 410px;
         }
         
         #divLogin {
@@ -170,7 +174,7 @@
 
         #fieldsetLogin {
             max-width: 500px;
-        }
+        }   
 
 /* -------- INDEX --------- */
 
@@ -231,8 +235,7 @@
 
         #donostiN:hover{
             content: url("../img/donosti-cambiado.png");
-        }
-
+        }     
 
 /* -------- PERFIL -------- */
 
@@ -245,6 +248,7 @@
             padding: 0;
             display: block;
             width: 1100px;
+            height: 600px;
         }
 
         /* Parte de la imagen */
@@ -273,7 +277,11 @@
         #fieldsetPerfil {
             max-width: 500px;
         }
-
+        #direccion{
+           max-width: 349px;
+           max-height: 49px;
+        }
+        
         #divPerfil {
             width: 400px;
             float: left;
@@ -284,3 +292,4 @@
             float: left;
             margin-left: 20px;
         }
+        
