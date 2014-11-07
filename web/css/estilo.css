@@ -186,7 +186,42 @@
             width: 100%;
             height: 500px;
         }
-
+        #busqueda{
+           width: 100%;
+           height: 60px;
+        }
+        
+        #buscado{
+            width: 25%;
+            height: 30px;
+            border-radius: 3px;
+            border: solid 1px #666;
+            text-align: center;
+            box-shadow: 3px 3px 3px #666;
+        }
+        
+        #botonBuscar{
+            margin-left: 15px;
+            width: 10%;
+            height: 30px;
+            border-radius: 3px;
+            border: solid 1px #666;
+            color: #ffffff;
+            background: #00cc6f;
+            box-shadow: 3px 3px 3px #666;
+        }
+        
+        #botonBuscar:hover{
+            margin-left: 15px;
+            width: 10%;
+            height: 30px;
+            border-radius: 3px;
+            border: solid 1px #666;
+            color: #ffffff;
+            background: darkgreen;
+            box-shadow: 3px 3px 3px #666;
+        }
+        
         #divImagenes{
 
             width: 100%;
