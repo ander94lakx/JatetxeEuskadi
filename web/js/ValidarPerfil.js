@@ -137,9 +137,9 @@ function validarDNI() {
 }
 
 function validarFecha() {
-    var dia = document.getElementById("dia").value;
-    var mes = document.getElementById("mes").value;
-    var ano = document.getElementById("ano").value;
+    var dia = parseInt(document.getElementById("dia").value);
+    var mes = parseInt(document.getElementById("mes").value);
+    var ano = parseInt(document.getElementById("ano").value);
     if(mes == 2) {
 	if(((ano % 4 == 0) && (ano % 100 != 0)) || (ano % 400 == 0)) {
             if(dia > 29) {
@@ -156,6 +156,7 @@ function validarFecha() {
             return false;
         }
     }
+    return true;
     
     /*
      * Esta parte serviria para comprobar si es una fecha anterior a la del dia de hoy
@@ -173,6 +174,8 @@ function validarFecha() {
 //            }
 //        }
 //    } // Esto solo comprueba que la fecha sea anterior al dia actual
+    // Esta comentado ya que el la lista desplegable del año ya tiene determinados
+    // una serie de años que siempre van a ser anteriores a la fecha actual
 }
 
 // Metodos relacionados con la carga de la imagen
@@ -240,10 +243,16 @@ function controlar(evento) {
         else if(elemento == document.getElementById("dia") || 
                 elemento == document.getElementById("mes") ||
                 elemento == document.getElementById("ano")) {
-            if(validarFecha())
-                elemento.style.borderColor = '#64FE2E'; 
-            else
-                elemento.style.borderColor = '#FF0000'; 
+            if(validarFecha()) {
+                document.getElementById("dia").style.borderColor = '#64FE2E';
+                document.getElementById("mes").style.borderColor = '#64FE2E';
+                document.getElementById("ano").style.borderColor = '#64FE2E';
+            }
+            else {
+                document.getElementById("dia").style.borderColor = '#FF0000';
+                document.getElementById("mes").style.borderColor = '#FF0000';
+                document.getElementById("ano").style.borderColor = '#FF0000';
+            }
         }
     } else {
         elemento.style.borderColor = '#FF0000';
