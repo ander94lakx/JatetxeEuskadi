@@ -1,5 +1,7 @@
 window.addEventListener("load", iniciar, false);
 
+var imagen = ""; // se guarda la imagen en una variable local para poder despues guardarla en el registro
+
 function iniciar() {
     // Eventos relacionados con el formulario de registro
     document.getElementById("botonRegistrar").addEventListener('click',validarDatos, false);
@@ -8,8 +10,9 @@ function iniciar() {
     document.getElementById('cajaRe').addEventListener('drop', drop, false);
     document.getElementById('archivoRe').addEventListener('change', cargar, false);
     // Validacion en tiempo real
-    document.registro.addEventListener("invalid", validacion, true);
+    //document.registro.addEventListener("invalid", validacion, true);
     document.registro.addEventListener("input", controlar, false);
+    document.getElementById("dni").addEventListener("input", validarDNI, false);
 }
     
 function validarDatos(e) {
@@ -58,6 +61,7 @@ function registrarUsuario() {
         ciudad: document.getElementById("ciudad").value,
         codigopostal: document.getElementById("codigopostal").value,
         telefono: document.getElementById("telefono").value,
+        imagen: imagen,
     };
     registrar = true;
     // Esto comprueba si el usuario ya existe
@@ -95,6 +99,10 @@ function cargar(e) {
     var arch = new FileReader();
     arch.addEventListener('load', leer, false);
     arch.readAsDataURL(e.target.files[0]);
+    arch.onloadend = function () {
+        imagen = arch.result;
+        console.log(imagen);
+    };
 }
 
 function leer(e) {
@@ -106,6 +114,10 @@ function drop(e) {
     var arch = new FileReader();
     arch.addEventListener('load', leer, false);
     arch.readAsDataURL(e.dataTransfer.files[0]);
+    arch.onloadend = function () {
+        imagen = arch.result;
+        console.log(imagen);
+    };
 }
 
 function permitirDrop(e) {
@@ -131,6 +143,12 @@ function controlar(evento) {
     var elemento = evento.target;
     if (elemento.validity.valid) {
         elemento.style.borderColor = '#64FE2E';
+        if(elemento == document.getElementById("dni")) {
+            if(validarDNI())
+                elemento.style.borderColor = '#64FE2E';
+            else
+                elemento.style.borderColor = '#FF0000';
+        }
     } else {
         elemento.style.borderColor = '#FF0000';
     }

@@ -1,5 +1,7 @@
 window.addEventListener("load", iniciar, false);
 
+var imagen = ""; // se guarda la imagen en una variable local para poder despues guardarla en el registro
+
 function iniciar() {
     // Eventos relacionados con el formulario de registro
     document.getElementById("botonGuardar").addEventListener('click',validarDatos, false);
@@ -17,11 +19,11 @@ function iniciar() {
 
 function cargarDatos() {
     var usuarioActual = JSON.parse(localStorage.getItem(sessionStorage.getItem("usuarioActual")));
-    document.getElementById("email").value = usuarioActual.email ;
+    document.getElementById("email").value = usuarioActual.email;
     document.getElementById("dni").value = usuarioActual.dni;
-    document.getElementById("nombre").value = usuarioActual.nombre  ;
+    document.getElementById("nombre").value = usuarioActual.nombre ;
     document.getElementById("apellido").value =  usuarioActual.apellido;
-    document.getElementById("contrasena").value = ""; // no se muestra nada ya que no se almacena la contraseña
+    document.getElementById("contrasena").value = usuarioActual.contrasena; // no se muestra nada ya que no se almacena la contraseña
     document.getElementById("provincia").value = usuarioActual.provincia;
     document.getElementById("ciudad").value = usuarioActual.ciudad;
     document.getElementById("codigopostal").value = usuarioActual.codigopostal;
@@ -33,6 +35,8 @@ function cargarDatos() {
         document.getElementById("h").checked = true;
     else
         document.getElementById("m").checked = true;
+    document.getElementById('caja').style.backgroundImage = "url('" + usuarioActual.imagen + "')";
+    imagen = usuarioActual.imagen; // se guarda tambien en formato string la imagen en la  variable global por si no se acaba modificando
 }
     
 function validarDatos(e) {
@@ -69,8 +73,8 @@ function mostrarCoordenada(posicion) {
     ponerEnDireccion(direccion);
 }
 
-function ponerEnDireccion() {
-    document.getElementById("direccion").value = direccion;
+function ponerEnDireccion(dir) {
+    document.getElementById("direccion").value = dir;
 }
 
 // Metodo para guardar los cambios del usuario
@@ -78,8 +82,8 @@ function ponerEnDireccion() {
 function guardarUsuario() {
     // Esta primera parte comprueba si se desea cambiar la contrasena y actua en consecuencia
     var contr;
-    if(document.getElementById("contrasena").value == "")
-        contr = localStorage.getItem(sessionStorage.getItem("usuarioActual")).contrasena;
+    if(document.getElementById("contrasena").value == localStorage.getItem(sessionStorage.getItem("usuarioActual")).contrasena)
+        contr = document.getElementById("contrasena").value;
     else
         contr = obtenerHash(document.getElementById("contrasena").value);
     // Se crea ej JSON con la info del usuario
@@ -97,8 +101,8 @@ function guardarUsuario() {
         dia: document.getElementById("dia").value,
         mes: document.getElementById("mes").value,
         ano: document.getElementById("ano").value,
-        imagen: null, // TO-DO
-        direccion: null // TO-DO
+        direccion: document.getElementByid("direccion").value,
+        imagen: imagen,
     };
     // Y se guarda la informacion, eliminando antes la antigua
     localStorage.removeItem(usuario.email);
@@ -147,7 +151,7 @@ function validarFecha() {
                 return false;
             }
         }        
-    } else if(mes == 2 || mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+    } else if(mes == 4 || mes == 6 || mes == 9 || mes == 11) {
         if(dia > 30){
             return false;
         }
@@ -158,17 +162,17 @@ function validarFecha() {
      * o una fecha minima acordada, pero no es necesaria si en la lista desplegable
      * del año solo tenemos unos años ya definidos
      */
-    var fechaActual = new Date();
-    if(fechaActual.getFullYear() >= ano) {
-        if(fechaActual.getMonth() >= mes) {
-            if(fechaActual.getDay() > dia) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    } // Esto solo comprueba que la fecha sea anterior al dia actual
+//    var fechaActual = new Date();
+//    if(fechaActual.getFullYear() >= ano) {
+//        if(fechaActual.getMonth() >= mes) {
+//            if(fechaActual.getDay() > dia) {
+//                return true;
+//            }
+//            else {
+//                return false;
+//            }
+//        }
+//    } // Esto solo comprueba que la fecha sea anterior al dia actual
 }
 
 // Metodos relacionados con la carga de la imagen
@@ -183,6 +187,10 @@ function cargar(e) {
     var arch = new FileReader();
     arch.addEventListener('load', leer, false);
     arch.readAsDataURL(e.target.files[0]);
+    arch.onloadend = function () {
+        imagen = arch.result;
+        console.log(imagen);
+    }
 }
 
 function leer(e) {
@@ -194,6 +202,10 @@ function drop(e) {
     var arch = new FileReader();
     arch.addEventListener('load', leer, false);
     arch.readAsDataURL(e.dataTransfer.files[0]);
+    arch.onloadend = function () {
+        imagen = arch.result;
+        console.log(imagen);
+    }
 }
 
 function permitirDrop(e) {
@@ -219,6 +231,20 @@ function controlar(evento) {
     var elemento = evento.target;
     if (elemento.validity.valid) {
         elemento.style.borderColor = '#64FE2E';
+        if(elemento == document.getElementById("dni")) {
+            if(validarDNI())
+                elemento.style.borderColor = '#64FE2E'; 
+            else
+                elemento.style.borderColor = '#FF0000';
+        }
+        else if(elemento == document.getElementById("dia") || 
+                elemento == document.getElementById("mes") ||
+                elemento == document.getElementById("ano")) {
+            if(validarFecha())
+                elemento.style.borderColor = '#64FE2E'; 
+            else
+                elemento.style.borderColor = '#FF0000'; 
+        }
     } else {
         elemento.style.borderColor = '#FF0000';
     }
