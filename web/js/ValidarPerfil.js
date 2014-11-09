@@ -23,7 +23,7 @@ function cargarDatos() {
     document.getElementById("dni").value = usuarioActual.dni;
     document.getElementById("nombre").value = usuarioActual.nombre ;
     document.getElementById("apellido").value =  usuarioActual.apellido;
-    document.getElementById("contrasena").value = usuarioActual.contrasena; // no se muestra nada ya que no se almacena la contraseña
+    document.getElementById("contrasena").value = ""; // no se muestra nada ya que no se almacena la contraseña
     document.getElementById("provincia").value = usuarioActual.provincia;
     document.getElementById("ciudad").value = usuarioActual.ciudad;
     document.getElementById("codigopostal").value = usuarioActual.codigopostal;
@@ -82,7 +82,7 @@ function ponerEnDireccion(dir) {
 function guardarUsuario() {
     // Esta primera parte comprueba si se desea cambiar la contrasena y actua en consecuencia
     var contr;
-    if(document.getElementById("contrasena").value == localStorage.getItem(sessionStorage.getItem("usuarioActual")).contrasena)
+    if(document.getElementById("contrasena").value == "")
         contr = document.getElementById("contrasena").value;
     else
         contr = obtenerHash(document.getElementById("contrasena").value);
