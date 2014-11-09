@@ -14,7 +14,7 @@
         header {
             height: 120px;
             width: 100%;
-            background: linear-gradient(to bottom, #00cc6f, darkgreen);
+            background: linear-gradient(to bottom, #00cc6f, rgb(0,121,0));
             text-align: center;
             
         }
@@ -29,12 +29,7 @@
             height: 40px;
             width: 100%;
         }
-        
-        /*section{
-            margin-bottom: 10px;
-        }
-        */
-        
+
         /* Parte de los labels de los registros, perfil, login,... */
         
         .camposDeReg {
@@ -154,8 +149,12 @@
         }
         
         #botonRegistrar {
-            alignment-baseline: middle;
-            alignment-adjust: middle;
+            margin-left: 130px;
+            height: 30px;
+            width: 100px;
+            color: #ffffff;
+            background: #00cc6f;
+            border: solid 1px #666;
         }
 
 /* -------- LOGIN --------- */
@@ -176,7 +175,15 @@
         #fieldsetLogin {
             max-width: 500px;
         }   
-
+        
+        #botonEntrar{
+            margin-left: 120px; 
+            height: 30px;
+            width: 100px;
+            color: #ffffff;
+            background: #00cc6f;
+            border: solid 1px #666;
+        }
 /* -------- INDEX --------- */
 
         #navIndex{
@@ -327,5 +334,14 @@
         #localizacion{
             float: left;
             margin-left: 20px;
+        }
+        
+        #botonGuardar{
+            margin-left: 100px;
+            height: 30px;
+            width: 150px;
+            color: #ffffff;
+            background: #00cc6f;
+            border: solid 1px #666;
         }
         
