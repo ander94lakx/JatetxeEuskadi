@@ -25,26 +25,22 @@ function loguearUsuario() {
 
     logueado = false;
 
-    for(var f = 0; f < localStorage.length; f++){
-        var clave = localStorage.key(f);
-        var valor = JSON.parse(localStorage.getItem(clave));
+    var valor = JSON.parse(localStorage.getItem(email));
         
-        if(clave == email) {
-            if(valor.contrasena == contrasena) {
-                logueado = true;
-                break;
-            }
-            else {
-                alert("Contraseña incorrecta");
-            }
+    if(valor != null)  {
+        if(valor.contrasena == contrasena) {
+            logueado = true;
+        }
+        else {
+            alert("Contraseña incorrecta");
         }
     }
-    
+    else {
+        alert("El usuario no existe");
+    }
     if(logueado) {
         sessionStorage.removeItem("usuarioActual");
         sessionStorage.setItem("usuarioActual", email);
-    } else {
-        alert("El usuario no existe");
     }
 }
 
