@@ -1,5 +1,4 @@
 window.addEventListener("load", iniciar, false);
-window.addEventListener("onload", cargarDatos, false);
 
 function iniciar() {
     // Eventos relacionados con el formulario de registro
@@ -13,6 +12,7 @@ function iniciar() {
     // Validacion en tiempo real
     document.perfil.addEventListener("invalid", validacion, true);
     document.perfil.addEventListener("input", controlar, false);
+    cargarDatos();
 }
 
 function cargarDatos() {
