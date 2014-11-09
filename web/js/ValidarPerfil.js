@@ -31,6 +31,7 @@ function cargarDatos() {
     document.getElementById("dia").value = usuarioActual.dia;
     document.getElementById("mes").value =  usuarioActual.mes; 
     document.getElementById("ano").value = usuarioActual.ano;
+    document.getElementById("direccion").value = usuarioActual.direccion;
     if(usuarioActual.sexo == "h")
         document.getElementById("h").checked = true;
     else
@@ -81,9 +82,10 @@ function ponerEnDireccion(dir) {
 
 function guardarUsuario() {
     // Esta primera parte comprueba si se desea cambiar la contrasena y actua en consecuencia
+    
     var contr;
     if(document.getElementById("contrasena").value == "")
-        contr = document.getElementById("contrasena").value;
+        contr = (JSON.parse(localStorage.getItem(sessionStorage.getItem("usuarioActual")))).contrasena;
     else
         contr = obtenerHash(document.getElementById("contrasena").value);
     // Se crea ej JSON con la info del usuario
@@ -101,18 +103,18 @@ function guardarUsuario() {
         dia: document.getElementById("dia").value,
         mes: document.getElementById("mes").value,
         ano: document.getElementById("ano").value,
-        direccion: document.getElementByid("direccion").value,
+        direccion: document.getElementById("direccion").value,
         imagen: imagen,
     };
     // Y se guarda la informacion, eliminando antes la antigua
     localStorage.removeItem(usuario.email);
-    localStorage.setItem(usuario.email, usuario);
+    localStorage.setItem(usuario.email, JSON.stringify(usuario));
 
 }
 
 // Pequeña funcion para obtener el sexo
 function obtenerSexo() {
-    if(document.getElementByid("h").checked) {
+    if(document.getElementById("h").checked) {
         return "h";
     } else { 
         return "m";
