@@ -156,6 +156,16 @@
             background: #00cc6f;
             border: solid 1px #666;
         }
+        
+        #botonRegistrar:hover{
+            margin-left: 130px;
+            height: 30px;
+            width: 100px;
+            color: #00cc6f;
+            background: #ffffff;
+            border: solid 1px #666;
+            font-size: 17px;
+        }
 
 /* -------- LOGIN --------- */
 
@@ -177,13 +187,24 @@
         }   
         
         #botonEntrar{
-            margin-left: 120px; 
+            margin-left: 130px; 
             height: 30px;
             width: 100px;
             color: #ffffff;
             background: #00cc6f;
             border: solid 1px #666;
         }
+        
+        #botonEntrar:hover{
+            margin-left: 130px; 
+            height: 30px;
+            width: 100px;
+            color: #00cc6f;
+            background: #ffffff;
+            border: solid 1px #666;
+            font-size: 20px;
+        }
+        
 /* -------- INDEX --------- */
 
         #navIndex{
@@ -343,5 +364,15 @@
             color: #ffffff;
             background: #00cc6f;
             border: solid 1px #666;
+        }
+        
+        #botonGuardar:hover{
+            margin-left: 100px;
+            height: 30px;
+            width: 150px;
+            color: #00cc6f;
+            background: #ffffff;
+            border: solid 1px #666;
+            font-size: 17px;
         }
         
