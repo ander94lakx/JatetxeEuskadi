@@ -1,7 +1,5 @@
 window.addEventListener("load", iniciar, false);
 
-var imagen = ""; // se guarda la imagen en una variable local para poder despues guardarla en el registro
-
 function iniciar() {
     // Eventos relacionados con el formulario de registro
     document.getElementById("botonGuardar").addEventListener('click',validarDatos, false);
@@ -14,30 +12,6 @@ function iniciar() {
     // Validacion en tiempo real
     document.perfil.addEventListener("invalid", validacion, true);
     document.perfil.addEventListener("input", controlar, false);
-    cargarDatos();
-}
-
-function cargarDatos() {
-    var usuarioActual = JSON.parse(localStorage.getItem(sessionStorage.getItem("usuarioActual")));
-    document.getElementById("email").value = usuarioActual.email;
-    document.getElementById("dni").value = usuarioActual.dni;
-    document.getElementById("nombre").value = usuarioActual.nombre ;
-    document.getElementById("apellido").value =  usuarioActual.apellido;
-    document.getElementById("contrasena").value = ""; // no se muestra nada ya que no se almacena la contraseña
-    document.getElementById("provincia").value = usuarioActual.provincia;
-    document.getElementById("ciudad").value = usuarioActual.ciudad;
-    document.getElementById("codigopostal").value = usuarioActual.codigopostal;
-    document.getElementById("telefono").value = usuarioActual.telefono;
-    document.getElementById("dia").value = usuarioActual.dia;
-    document.getElementById("mes").value =  usuarioActual.mes; 
-    document.getElementById("ano").value = usuarioActual.ano;
-    document.getElementById("direccion").value = usuarioActual.direccion;
-    if(usuarioActual.sexo == "h")
-        document.getElementById("h").checked = true;
-    else
-        document.getElementById("m").checked = true;
-    document.getElementById('caja').style.backgroundImage = "url('" + usuarioActual.imagen + "')";
-    imagen = usuarioActual.imagen; // se guarda tambien en formato string la imagen en la  variable global por si no se acaba modificando
 }
     
 function validarDatos(e) {
@@ -48,11 +22,8 @@ function validarDatos(e) {
         if(!validarDNI()) {
             alert("El DNI introducido no existe");
         } else {
-            if(!validarFecha()) {
+            if(!validarFecha())
                 alert("La fecha seleccionada no existe");
-            } else {
-                guardarUsuario();
-            }
         }
     }   
 }
@@ -76,49 +47,6 @@ function mostrarCoordenada(posicion) {
 
 function ponerEnDireccion(dir) {
     document.getElementById("direccion").value = dir;
-}
-
-// Metodo para guardar los cambios del usuario
-
-function guardarUsuario() {
-    // Esta primera parte comprueba si se desea cambiar la contrasena y actua en consecuencia
-    
-    var contr;
-    if(document.getElementById("contrasena").value == "")
-        contr = (JSON.parse(localStorage.getItem(sessionStorage.getItem("usuarioActual")))).contrasena;
-    else
-        contr = obtenerHash(document.getElementById("contrasena").value);
-    // Se crea ej JSON con la info del usuario
-    var usuario = {
-        email: document.getElementById("email").value,
-        dni: document.getElementById("dni").value,
-        sexo: obtenerSexo(),
-        nombre: document.getElementById("nombre").value,
-        apellido: document.getElementById("apellido").value,
-        contrasena: contr,
-        provincia: document.getElementById("provincia").value,
-        ciudad: document.getElementById("ciudad").value,
-        codigopostal: document.getElementById("codigopostal").value,
-        telefono: document.getElementById("telefono").value,
-        dia: document.getElementById("dia").value,
-        mes: document.getElementById("mes").value,
-        ano: document.getElementById("ano").value,
-        direccion: document.getElementById("direccion").value,
-        imagen: imagen,
-    };
-    // Y se guarda la informacion, eliminando antes la antigua
-    localStorage.removeItem(usuario.email);
-    localStorage.setItem(usuario.email, JSON.stringify(usuario));
-
-}
-
-// Pequeña funcion para obtener el sexo
-function obtenerSexo() {
-    if(document.getElementById("h").checked) {
-        return "h";
-    } else { 
-        return "m";
-    }
 }
 
 // Metodos relacionados con la validacion de los datos
@@ -215,20 +143,6 @@ function drop(e) {
 
 function permitirDrop(e) {
     e.preventDefault();
-}
-
-// Funcion para obtener el hash de la contraseña
-function obtenerHash(cadena) {
-    var hash = 0;
-    var i, chr, len;
-    if(cadena.length == 0)
-        return hash;
-    for(i = 0, len = cadena.length; i < len; i++) {
-        chr = cadena.charCodeAt(i);
-        hash = ((hash << 5) - hash) + chr;
-        hash |=0;
-    }
-    return hash;
 }
 
 //Se controla en tiempo real los cambios en los inputs

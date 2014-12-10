@@ -1,8 +1,6 @@
 window.addEventListener("load", iniciar, false);
 
 function iniciar() {
-    // Eventos relacionados con el formulario de registro
-    document.getElementById("botonEntrar").addEventListener('click',validarDatos, false);
     // Validacion en tiempo real
     document.login.addEventListener("invalid", validacion, true);
     document.login.addEventListener("input", controlar, false);
@@ -17,46 +15,6 @@ function validarDatos(e) {
         loguearUsuario();
     }   
 }    
-
-function loguearUsuario() {
-    
-    email = document.getElementById("email").value;
-    contrasena = obtenerHash(document.getElementById("contrasena").value);
-
-    logueado = false;
-
-    var valor = JSON.parse(localStorage.getItem(email));
-        
-    if(valor != null)  {
-        if(valor.contrasena == contrasena) {
-            logueado = true;
-        }
-        else {
-            alert("Contraseña incorrecta");
-        }
-    }
-    else {
-        alert("El usuario no existe");
-    }
-    if(logueado) {
-        sessionStorage.removeItem("usuarioActual");
-        sessionStorage.setItem("usuarioActual", email);
-    }
-}
-
-// Funcion para obtener el hash de la contraseña
-function obtenerHash(cadena) {
-    var hash = 0;
-    var i, chr, len;
-    if(cadena.length == 0)
-        return hash;
-    for(i = 0, len = cadena.length; i < len; i++) {
-        chr = cadena.charCodeAt(i);
-        hash = ((hash << 5) - hash) + chr;
-        hash |=0;
-    }
-    return hash;
-}
 
 //Se controla en tiempo real los cambios en los inputs
 function controlar(evento) {
