@@ -38,6 +38,35 @@ public class ServletRegistro extends HttpServlet {
     String imagen = "";
     
     Connection conn = null;
+    
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+             // Llamada al método init() de la superclase (GenericServlet)
+        // Así se asegura una correcta inicialización del servlet
+        super.init(config);
+
+        // dsn (Data Source Name) de la base de datos
+        String dsn = new String("jdbc:odbc:NombreLogicoBaseDeDatos");
+
+        // Carga del Driver del puente JDBC-ODBC
+        try {
+          Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+        } catch(ClassNotFoundException ex) {
+          System.out.println("Error al cargar el driver");
+          System.out.println(ex.getMessage());
+        }
+        // Establecimiento de la conexión con la base de datos
+        try {
+          conn = DriverManager.getConnection(dsn, "", "");
+        } catch (SQLException sqlEx) {
+          System.out.println("Se ha producido un error al" +
+                             " establecer la conexión con: " + dsn);
+          System.out.println(sqlEx.getMessage());
+        }
+
+        System.out.println("Iniciando ServletOpinion (version BD)...");
+    }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -140,6 +169,20 @@ public class ServletRegistro extends HttpServlet {
             out.println("</html>");
         }
     }
+    
+    private void insertarUsuarioBD() {
+       Statement st = null;
+       
+       try{
+           st= conn.createStatement();
+           st.executeUpdate("INSERT INTO Usuario VALUES " + "('"+email+"','"+dni+"','"+sexo+"','"+nombre+"','"
+                   +apellido+"','"+provincia+"','"+ciudad+"','"+codigopostal+"','"+telefono+"','"
+                   +dia+"','"+mes+"','"+ano+"','"+direccion+"','"+imagen+"')");
+       }catch(SQLException sql){
+           System.out.println("Se produjo un errror creando el Statement");
+           System.out.println(sql.getMessage());
+        }
+    }
 
     /*
      * Handles the HTTP <code>POST</code> method.
@@ -163,47 +206,5 @@ public class ServletRegistro extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-    
-     public void init (ServletConfig config) throws ServletException {
-             // Llamada al método init() de la superclase (GenericServlet)
-    // Así se asegura una correcta inicialización del servlet
-    super.init(config);
-
-    // dsn (Data Source Name) de la base de datos
-    String dsn = new String("jdbc:odbc:NombreLogicoBaseDeDatos");
-
-    // Carga del Driver del puente JDBC-ODBC
-    try {
-      Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-    } catch(ClassNotFoundException ex) {
-      System.out.println("Error al cargar el driver");
-      System.out.println(ex.getMessage());
-    }
-    // Establecimiento de la conexión con la base de datos
-    try {
-      conn = DriverManager.getConnection(dsn, "", "");
-    } catch (SQLException sqlEx) {
-      System.out.println("Se ha producido un error al" +
-                         " establecer la conexión con: " + dsn);
-      System.out.println(sqlEx.getMessage());
-    }
-
-    System.out.println("Iniciando ServletOpinion (version BD)...");
-  } 
-
-    private void insertarUsuarioBD() {
-       Statement st = null;
-       
-       try{
-           st= conn.createStatement();
-           st.executeUpdate("INSERT INTO Usuario VALUES " + "('"+email+"','"+dni+"','"+sexo+"','"+nombre+"','"
-                   +apellido+"','"+provincia+"','"+ciudad+"','"+codigopostal+"','"+telefono+"','"
-                   +dia+"','"+mes+"','"+ano+"','"+direccion+"','"+imagen+"')");
-       }catch(SQLException sql){
-           System.out.println("Se produjo un errror creando el Statement");
-           System.out.println(sql.getMessage());
-        }
-    }
-     
+    }// </editor-fold
 }
