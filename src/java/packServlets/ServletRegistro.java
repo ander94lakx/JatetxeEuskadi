@@ -41,7 +41,7 @@ public class ServletRegistro extends HttpServlet {
     
     @Override
     public void init(ServletConfig config) throws ServletException {
-             // Llamada al método init() de la superclase (GenericServlet)
+        // Llamada al método init() de la superclase (GenericServlet)
         // Así se asegura una correcta inicialización del servlet
         super.init(config);
 
@@ -64,7 +64,7 @@ public class ServletRegistro extends HttpServlet {
           System.out.println(sqlEx.getMessage());
         }
 
-        System.out.println("Iniciando ServletOpinion (version BD)...");
+        System.out.println("Iniciando ServletRegistro...");
     }
     
     /**
