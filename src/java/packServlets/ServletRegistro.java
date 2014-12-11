@@ -46,7 +46,7 @@ public class ServletRegistro extends HttpServlet {
         super.init(config);
 
         // dsn (Data Source Name) de la base de datos
-        String dsn = new String("jdbc:odbc:NombreLogicoBaseDeDatos");
+        String dsn = "jdbc:odbc:NombreLogicoBaseDeDatos";
 
         // Carga del Driver del puente JDBC-ODBC
         try {
