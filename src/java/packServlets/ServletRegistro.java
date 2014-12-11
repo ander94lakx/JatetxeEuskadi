@@ -120,8 +120,11 @@ public class ServletRegistro extends HttpServlet {
         else
             existeError = true;
         
-        if(insertarUsuarioBD() == 0){
-        }
+        if(existeError = false)
+            insertarUsuarioBD();
+        else
+            System.out.println("Se ha producido un error");
+        
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
