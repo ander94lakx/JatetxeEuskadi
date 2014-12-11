@@ -1,4 +1,4 @@
-package beans;
+package packBeans;
 
 public class BeanUsuario {
     String email = "";
