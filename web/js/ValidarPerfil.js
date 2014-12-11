@@ -1,5 +1,7 @@
 window.addEventListener("load", iniciar, false);
 
+var imagen = ""; // se guarda la imagen en una variable local para poder despues guardarla en el registro
+
 function iniciar() {
     // Eventos relacionados con el formulario de registro
     document.getElementById("botonGuardar").addEventListener('click',validarDatos, false);
