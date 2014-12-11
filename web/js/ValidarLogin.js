@@ -1,6 +1,8 @@
 window.addEventListener("load", iniciar, false);
 
 function iniciar() {
+    // Eventos relacionados con el formulario de registro
+    document.getElementById("botonEntrar").addEventListener('click',validarDatos, false);
     // Validacion en tiempo real
     document.login.addEventListener("invalid", validacion, true);
     document.login.addEventListener("input", controlar, false);
