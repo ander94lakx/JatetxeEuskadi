@@ -4,9 +4,17 @@
         <servlet-name>ServletRegistro</servlet-name>
         <servlet-class>packServlets.ServletRegistro</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletLogin</servlet-name>
+        <servlet-class>packServlets.ServletLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletRegistro</servlet-name>
         <url-pattern>/Registrarse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletLogin</servlet-name>
+        <url-pattern>/Loguearse</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
