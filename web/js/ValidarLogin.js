@@ -11,8 +11,6 @@ function iniciar() {
 function validarDatos(e) {
     
     if (document.getElementById('login').checkValidity()) {        
-        //evento.preventDefault() impide que se complete el submit cuando la validación del formulario en HTML 5
-        //es correcta y permite terminar con la validación necesaria en javascript.
         e.preventDefault();
         loguearUsuario();
     }   

@@ -10,7 +10,6 @@ function iniciar() {
     document.getElementById('cajaRe').addEventListener('drop', drop, false);
     document.getElementById('archivoRe').addEventListener('change', cargar, false);
     // Validacion en tiempo real
-    //document.registro.addEventListener("invalid", validacion, true);
     document.registro.addEventListener("input", controlar, false);
     document.getElementById("dni").addEventListener("input", validarDNI, false);
 }
@@ -18,8 +17,6 @@ function iniciar() {
 function validarDatos(e) {
     
     if (document.getElementById('registro').checkValidity()) {        
-        //evento.preventDefault() impide que se complete el submit cuando la validación del formulario en HTML 5
-        //es correcta y permite terminar con la validación necesaria en javascript.
         e.preventDefault();
         if(!validarDNI()) {
             alert("El DNI introducido no existe");

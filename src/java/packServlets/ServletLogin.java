@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package packServlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ServletLogin extends HttpServlet {
+    
     String email;
     String contrasena;
     
@@ -26,40 +21,24 @@ public class ServletLogin extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        // Llamada al método init() de la superclase (GenericServlet)
-        // Así se asegura una correcta inicialización del servlet
+
         super.init(config);
 
-        // dsn (Data Source Name) de la base de datos
-        String dsn = "jdbc:odbc:bdjatetxe";
-
-        // Carga del Driver del puente JDBC-ODBC
-        try {
-          Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-        } catch(ClassNotFoundException ex) {
-          System.out.println("Error al cargar el driver");
-          System.out.println(ex.getMessage());
+        if(config.getServletContext().getAttribute("CONEXION") == null) {
+            String dsn = "jdbc:odbc:"+config.getServletContext().getInitParameter("BD");
+            try {
+              Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+              conn = DriverManager.getConnection(dsn, "", "");
+            } catch(ClassNotFoundException ex) {
+              System.out.println("Error al cargar el driver");
+            } catch (SQLException sqlEx) {
+              System.out.println("Se ha producido un error al establecer la conexión con: " + dsn);
+            }
+        } else {
+            conn = (Connection) config.getServletContext().getAttribute("CONEXION");
         }
-        // Establecimiento de la conexión con la base de datos
-        try {
-          conn = DriverManager.getConnection(dsn, "", "");
-        } catch (SQLException sqlEx) {
-          System.out.println("Se ha producido un error al" +
-                             " establecer la conexión con: " + dsn);
-          System.out.println(sqlEx.getMessage());
-        }
-
-        System.out.println("Iniciando ServletLogin...");
     }
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -112,28 +91,14 @@ public class ServletLogin extends HttpServlet {
         return String.valueOf(hash);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
     }
-
 }

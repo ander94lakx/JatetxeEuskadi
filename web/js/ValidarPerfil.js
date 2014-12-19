@@ -18,8 +18,6 @@ function iniciar() {
     
 function validarDatos(e) {
     if (document.getElementById('perfil').checkValidity()) {        
-        //evento.preventDefault() impide que se complete el submit cuando la validación del formulario en HTML 5
-        //es correcta y permite terminar con la validación necesaria en javascript.
         e.preventDefault();
         if(!validarDNI()) {
             alert("El DNI introducido no existe");
@@ -89,25 +87,6 @@ function validarFecha() {
         }
     }
     return true;
-    
-    /*
-     * Esta parte serviria para comprobar si es una fecha anterior a la del dia de hoy
-     * o una fecha minima acordada, pero no es necesaria si en la lista desplegable
-     * del año solo tenemos unos años ya definidos
-     */
-//    var fechaActual = new Date();
-//    if(fechaActual.getFullYear() >= ano) {
-//        if(fechaActual.getMonth() >= mes) {
-//            if(fechaActual.getDay() > dia) {
-//                return true;
-//            }
-//            else {
-//                return false;
-//            }
-//        }
-//    } // Esto solo comprueba que la fecha sea anterior al dia actual
-    // Esta comentado ya que el la lista desplegable del año ya tiene determinados
-    // una serie de años que siempre van a ser anteriores a la fecha actual
 }
 
 // Metodos relacionados con la carga de la imagen
@@ -140,7 +119,7 @@ function drop(e) {
     arch.onloadend = function () {
         imagen = arch.result;
         console.log(imagen);
-    }
+    };
 }
 
 function permitirDrop(e) {
