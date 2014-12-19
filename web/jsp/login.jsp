@@ -19,7 +19,6 @@
             <div id="webLogin">
                 <div id="divLogin">
                     <fieldset id="fieldsetLogin">
-<!--                        <legend>Login</legend>-->
                         <form name="login" id="login" method="post" action="Loguearse">
 
                             <label class="camposDeReg">Email:  </label>

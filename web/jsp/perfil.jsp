@@ -23,7 +23,6 @@
                 </div>
                 <div id="divPerfil">
                     <fieldset id="fieldsetPerfil">
-                        <!--<legend>Perfil</legend>-->
                         <form name="perfil" id="perfil" method="get">
 
                             <label class="camposDeReg">Eres: *</label>

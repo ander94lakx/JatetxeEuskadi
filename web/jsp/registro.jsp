@@ -23,7 +23,6 @@
                 </div>
                 <div id="divRegistro">
                     <fieldset id="fieldsetRegistro">
-                       <!-- <legend>Registro</legend>-->
                         <form name="registro" id="registro" method="post" action="Registrarse">
 
                             <label class="camposDeReg">Eres: *</label>
