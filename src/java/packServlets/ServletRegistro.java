@@ -1,11 +1,7 @@
 package packServlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -123,39 +119,38 @@ public class ServletRegistro extends HttpServlet {
         else
             existeError = true;
         
-        if(!existeError)
-            insertarUsuarioBD();
+        if(!existeError) {
+            if(insertarUsuarioBD()){
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            } else {
+                String error = "Error al registrar al ususario: ya existe un uuario con el mismo email";
+                request.getSession(true).setAttribute("errorRegistro", error);
+                request.getRequestDispatcher("/registro.jsp").forward(request, response);
+            }
+            
+        }
         else
             System.out.println("Se ha producido un error");
-        
-        
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletRegistro</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletRegistro at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
     
-    private void insertarUsuarioBD() {
-       Statement st = null;
-       
-       try{
-           st= conn.createStatement();
-           st.executeUpdate("INSERT INTO Usuario VALUES " + "('"+email+"','"+dni+"','"+sexo+"','"+nombre+"','"
-                   +apellido+"','"+provincia+"','"+ciudad+"','"+codigopostal+"','"+telefono+"','"
-                   +dia+"','"+mes+"','"+ano+"','"+direccion+"','"+imagen+"')");
-       }catch(SQLException sql){
-           System.out.println("Se produjo un errror creando el Statement");
-           System.out.println(sql.getMessage());
+    private boolean insertarUsuarioBD() {
+        Statement st = null;
+        try{
+            st= conn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT email FROM Usuario");
+            if(rs.getString("email") == null) {
+                return false;
+            } else {
+                st.executeUpdate("INSERT INTO Usuario VALUES " + "('"+email+"','"+dni+"','"+sexo+"','"+nombre+"','"
+                    +apellido+"','"+provincia+"','"+ciudad+"','"+codigopostal+"','"+telefono+"','"
+                    +dia+"','"+mes+"','"+ano+"','"+direccion+"','"+imagen+"')");
+                return true;
+            }
+        } catch(SQLException sql){
+            System.out.println("Se produjo un errror creando el Statement");
+            System.out.println(sql.getMessage());
         }
+        return false;
     }
 
     @Override
