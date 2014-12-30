@@ -88,6 +88,11 @@
             color: #00cc6f; 
         }
         
+        .mensajesDeError {
+            color: red;
+            text-align: center;
+            size: 16;
+        }
         
         #licencia {
             color: #ffffff;
