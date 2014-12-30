@@ -11,8 +11,13 @@
            <img id="logo">
         </header>
         <nav id="navIndex">
-            <a id="linkRegistro" class="linksDelNav" href="registro.html">REGISTRARSE</a>
-            <a id="linkLogin" class="linksDelNav" href="login.html">INICIAR SESION</a>
+            <% if(session.getAttribute("usuarioActual") == null) { %>
+                <a id="linkRegistro" class="linksDelNav" href="registro.jsp">REGISTRARSE</a>
+                <a id="linkLogin" class="linksDelNav" href="login.jsp">INICIAR SESION</a>
+                <% } else { %>
+                <label id="hola">Hola, <%= (String) session.getAttribute("usuarioActual")%></label>
+                <a id="linkPerfil" class="linksDelNav" href="perfil.jsp">TU PERFIL</a>
+            <% } %>
         </nav>
         <section id="sectionIndex">
             <div id="divImagenes">
