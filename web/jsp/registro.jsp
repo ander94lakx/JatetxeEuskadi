@@ -90,7 +90,10 @@
                     </fieldset>
                     <% if(session.getAttribute("errorRegistro") != null) { %>
                         <label class="mensajesDeError"><%= (String) session.getAttribute("errorRegistro")%></label>
-                    <% } %>
+                    <%
+                        session.setAttribute("errorRegistro", null);
+                        } 
+                    %>
                 </div>
             </div>
         </section>

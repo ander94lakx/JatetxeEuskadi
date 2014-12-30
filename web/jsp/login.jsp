@@ -38,7 +38,10 @@
                     </fieldset>
                     <% if(session.getAttribute("errorLogin") != null) { %>
                         <label class="mensajesDeError"><%= (String) session.getAttribute("errorLogin")%></label>
-                    <% } %>
+                    <% 
+                        session.setAttribute("errorLogin", null);
+                        } 
+                    %>
                 </div>
             </div>
         </section>
