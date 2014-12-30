@@ -23,6 +23,7 @@ public class ServletRegistro extends HttpServlet {
     short ano = 0;
     String direccion = "";
     String imagen = "";
+    String contrasena = "";
     
     Connection conn = null;
     
@@ -119,6 +120,11 @@ public class ServletRegistro extends HttpServlet {
         else
             existeError = true;
         
+        if(!request.getParameter("contrasena").equals(""))
+            contrasena = obtenerHash(request.getParameter("contrasena"));
+        else
+            existeError = true;
+        
         if(!existeError) {
             if(insertarUsuarioBD()){
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
@@ -143,7 +149,7 @@ public class ServletRegistro extends HttpServlet {
             } else {
                 st.executeUpdate("INSERT INTO Usuario VALUES " + "('"+email+"','"+dni+"','"+sexo+"','"+nombre+"','"
                     +apellido+"','"+provincia+"','"+ciudad+"','"+codigopostal+"','"+telefono+"','"
-                    +dia+"','"+mes+"','"+ano+"','"+direccion+"','"+imagen+"')");
+                    +dia+"','"+mes+"','"+ano+"','"+direccion+"','"+imagen+"','"+contrasena+"')");
                 return true;
             }
         } catch(SQLException sql){
@@ -151,6 +157,19 @@ public class ServletRegistro extends HttpServlet {
             System.out.println(sql.getMessage());
         }
         return false;
+    }
+    
+    private String obtenerHash(String cadena) {
+        int hash = 0;
+        int i, chr, len;
+        if(cadena.length() == 0)
+            return String.valueOf(hash);
+        for(i = 0, len = cadena.length(); i < len; i++) {
+            chr = cadena.charAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |=0;
+        }
+        return String.valueOf(hash);
     }
 
     @Override
