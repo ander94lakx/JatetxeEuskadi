@@ -88,6 +88,9 @@
                             <input type="submit" name="botonRegistrar" id="botonRegistrar" value="Regístrate">
                         </form>
                     </fieldset>
+                    <% if(session.getAttribute("errorRegistro") != null) { %>
+                        <label class="mensajesDeError"><%= (String) session.getAttribute("errorRegistro")%></label>
+                    <% } %>
                 </div>
             </div>
         </section>
