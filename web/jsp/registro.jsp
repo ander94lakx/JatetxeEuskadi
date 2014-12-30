@@ -61,17 +61,17 @@
                             <label class="camposDeReg">Provincia: *</label>
                             <select name="provincia" id="provincia" required="required">
                                 <option selected value="">Elige una opción</option>
-                                <option value="1">Álava</option>
-                                <option value="2">Guipuzcoa</option>
-                                <option value="3">Vizcaya</option>
+                                <option value="alava">Álava</option>
+                                <option value="guipuzcoa">Guipuzcoa</option>
+                                <option value="vizacaya">Vizcaya</option>
                             </select><br><br>
 
                             <label class="camposDeReg">Ciudad:</label>
                             <select name="ciudad" id="ciudad">
                                 <option selected value="">Elige una opción</option>
-                                <option value="1">Gasteiz</option>
-                                <option value="2">Donosti</option>
-                                <option value="3">Bilbo</option>
+                                <option value="gasteiz">Gasteiz</option>
+                                <option value="donosti">Donosti</option>
+                                <option value="bilbo">Bilbo</option>
                             </select><br><br>
 
                             <label class="camposDeReg">Código Postal: *</label>
