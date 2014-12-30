@@ -32,6 +32,7 @@ public class ServletPerfil extends HttpServlet {
     short ano = 0;
     String direccion = "";
     String imagen = "";
+    String contrasena = "";
 
     Connection conn = null;
     
@@ -128,6 +129,11 @@ public class ServletPerfil extends HttpServlet {
         else
             existeError = true;
         
+        if(!request.getParameter("contrasena").equals(""))
+            contrasena = request.getParameter("contrasena");
+        else
+            existeError = true;
+        
         if(!existeError) {
             if(actualizarUsuarioBD()){
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
@@ -144,13 +150,14 @@ public class ServletPerfil extends HttpServlet {
     
     private boolean actualizarUsuarioBD() {
         Statement st = null;
+        Statement st2 = null;
         try{
-            st= conn.createStatement();
+            st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT email FROM Usuario");
             if(rs.getString("email") == null) {
                 return false;
             } else {
-                st.executeQuery("UPDATE Usuario SET dni='"+dni+"',"+
+                st.executeUpdate("UPDATE Usuario SET dni='"+dni+"',"+
                                                    "sexo='"+sexo+"',"+
                                                    "nombre='"+nombre+"',"+
                                                    "apellido='"+apellido+"',"+
@@ -164,6 +171,13 @@ public class ServletPerfil extends HttpServlet {
                                                    "direccion='"+direccion+"',"+
                                                    "imagen='"+imagen+"'"+
                                 "WHERE email='"+email+"';");
+                st2 = conn.createStatement();
+                ResultSet rs2 = st2.executeQuery("SELECT contrasena FROM Usuario WHERE email='"+email+"';");
+                if(rs2.next()) {
+                    if(rs2.getString("contrasena").equals(contrasena)) {
+                        st2.executeUpdate("UPDATE Usuario SET contrasena='"+obtenerHash(contrasena)+"' WHERE email='"+email+"';");
+                    }
+                }
                 return true;
             }
         } catch(SQLException sql){
@@ -171,6 +185,19 @@ public class ServletPerfil extends HttpServlet {
             System.out.println(sql.getMessage());
         }
         return false;
+    }
+    
+    private String obtenerHash(String cadena) {
+        int hash = 0;
+        int i, chr, len;
+        if(cadena.length() == 0)
+            return String.valueOf(hash);
+        for(i = 0, len = cadena.length(); i < len; i++) {
+            chr = cadena.charAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |=0;
+        }
+        return String.valueOf(hash);
     }
 
     @Override
