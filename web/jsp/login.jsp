@@ -36,6 +36,9 @@
                             <input type="submit" name="botonEntrar" id="botonEntrar" value="Entrar">
                         </form>
                     </fieldset>
+                    <% if(session.getAttribute("errorLogin") != null) { %>
+                        <label class="mensajesDeError"><%= (String) session.getAttribute("errorLogin")%></label>
+                    <% } %>
                 </div>
             </div>
         </section>
