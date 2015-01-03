@@ -59,7 +59,7 @@ public class ServletLogin extends HttpServlet {
             String contrasenaAlmacenada = "";
             try {
                 st = conn.createStatement();
-                ResultSet rs = st.executeQuery("SELECT contrasena FROM Usuario WHERE email="+email);
+                ResultSet rs = st.executeQuery("SELECT contrasena FROM Usuario WHERE email='"+email+"';");
                 if(rs.next()){
                     contrasenaAlmacenada = rs.getString("contrasena");
                     if(obtenerHash(contrasena).equals(contrasenaAlmacenada)){
