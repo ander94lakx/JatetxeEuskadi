@@ -86,13 +86,13 @@ public class ServletReserva extends HttpServlet {
             if(realizarReserva()) {
                 System.out.println("Reserva realizada correctamente");
                 request.getSession(true).setAttribute("estadoReserva", "Reserva realizada correctamente");
-                request.getRequestDispatcher("/jsp/restaurante.jsp").forward(request, response);
-//                response.sendRedirect("/jsp/restaurante.jps?restaurante="+restaurante);
+//                request.getRequestDispatcher("/jsp/restaurante.jsp").forward(request, response);
+                response.sendRedirect("/jsp/restaurante.jsp?restaurante="+restaurante);
             } else {
                 System.out.println("Reserva no realizada");
                 request.getSession(true).setAttribute("estadoReserva", "Reserva no realizada");
-                request.getRequestDispatcher("/jsp/restaurante.jsp").forward(request, response);
-//                response.sendRedirect("/jsp/restaurante.jps?restaurante="+restaurante);
+//                request.getRequestDispatcher("/jsp/restaurante.jsp").forward(request, response);
+                response.sendRedirect("/jsp/restaurante.jsp?restaurante="+restaurante);
             }
         }
         else

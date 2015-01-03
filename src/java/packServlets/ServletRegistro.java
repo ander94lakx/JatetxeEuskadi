@@ -127,11 +127,13 @@ public class ServletRegistro extends HttpServlet {
         
         if(!existeError) {
             if(insertarUsuarioBD()){
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+//                request.getRequestDispatcher("index.jsp").forward(request, response);
+                response.sendRedirect("jsp/index.jsp");
             } else {
                 String error = "Error al registrar al ususario: ya existe un uuario con el mismo email";
                 request.getSession(true).setAttribute("errorRegistro", error);
-                request.getRequestDispatcher("registro.jsp").forward(request, response);
+//                request.getRequestDispatcher("registro.jsp").forward(request, response);
+                response.sendRedirect("jsp/registro.jsp");
             }
             
         }

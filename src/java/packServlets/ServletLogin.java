@@ -65,16 +65,19 @@ public class ServletLogin extends HttpServlet {
                     if(obtenerHash(contrasena).equals(contrasenaAlmacenada)){
                         // Se loguea, y se guarde en una var de sesion su email
                         request.getSession(true).setAttribute("usuarioActual", email);
-                        request.getRequestDispatcher("index.jsp").forward(request, response);
+//                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                        response.sendRedirect("jsp/index.jsp");
                     } else {
                         String error = "No se ha podido loguear: la contraseña es incorrecta";
                         request.getSession(true).setAttribute("errorLogin", error);
-                        request.getRequestDispatcher("login.jsp").forward(request, response);
+//                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                        response.sendRedirect("jsp/logig.jsp");
                     }
                 } else {
                     String error = "No se ha podido loguear: el usuario no esta registrado";
                     request.getSession(true).setAttribute("errorLogin", error);
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
+//                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                    response.sendRedirect("jsp/logig.jsp");
                 }               
             } catch(SQLException sql){
                 System.out.println("Se produjo un errror creando el Statement");
