@@ -5,17 +5,20 @@
         
     <% 
         Connection conn = null;
+        String restaurante = "";
         if(request.getParameter("restaurante") != null) {
             if(config.getServletContext().getAttribute("CONEXION") == null) {
                 String dsn = "jdbc:odbc:"+config.getServletContext().getInitParameter("BD");
                 Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
                 conn = DriverManager.getConnection(dsn, "", "");
             } else {
-                conn = (Connection) config.getServletContext().getAttribute("CONEXION");
+                conn = (Connection) config.getServletContext().getAttribute("CONEXION"); 
             }
+        String restaurante = (String) request.getParameter("buscado");
+            session.setAttribute("restauranteActual", restaurante);
         }
 
-        String restaurante = (String) request.getParameter("buscado");
+        
     %>
     
     <head>
@@ -54,7 +57,7 @@
             Ciudad: <%=ciudad%> <br>
             <form name="reserva" id="reserva" method="post" action="Reservar">
                 Personas: <input type="number" id="personas" name="personas" min="1" max="8"><br><br>
-                Fecha<input type="date" name="fecha" id="fecha"><br><br>
+                Fecha: <input type="date" name="fecha" id="fecha"><br><br>
                 Hora: <select name="hora" id="hora">
                     <option selected value="2100">21:00</option>
                     <option value="2130">21:30</option>
@@ -64,7 +67,14 @@
                 <input type="submit" id="reservar" name="reservar" value="RESERVAR"><br><br>
             </form>
         <%
+                }
             }
+        %>
+        <% if(session.getAttribute("estadoReserva") != null) { %>
+            <label class="mensajesDeError"><%= (String) session.getAttribute("estadoReserva")%></label>
+        <%
+            session.setAttribute("estadoReserva", null);
+            } 
         %>
         </section>
         <footer id="footerRestaurante">

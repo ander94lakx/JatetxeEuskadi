@@ -5,8 +5,12 @@
  */
 package packServlets;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.ResultTreeType;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,69 +21,156 @@ import javax.servlet.http.HttpServletResponse;
  * @author Asus
  */
 public class ServletReserva extends HttpServlet {
+    int personas = 0;
+    String fecha = "";
+    String hora = "";
+    String restaurante = "";
+    String usuario = "";
+    
+    Connection conn;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+
+        super.init(config);
+        
+        if(config.getServletContext().getAttribute("CONEXION") == null) {
+            String dsn = "jdbc:odbc:"+config.getServletContext().getInitParameter("BD");
+            try {
+              Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+              conn = DriverManager.getConnection(dsn, "", "");
+            } catch(ClassNotFoundException ex) {
+              System.out.println("Error al cargar el driver");
+            } catch (SQLException sqlEx) {
+              System.out.println("Se ha producido un error al establecer la conexión con: " + dsn);
+            }
+        } else {
+            conn = (Connection) config.getServletContext().getAttribute("CONEXION");
+        }
+    }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletReserva</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletReserva at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        boolean existeError = false;
+        if(!request.getParameter("personas").equals(""))
+            personas = Integer.parseInt(request.getParameter("personas"));
+        else
+            existeError = true;
+        
+        if(!request.getParameter("fecha").equals(""))
+            fecha = request.getParameter("fecha");
+        else
+            existeError = true;
+         
+        if(!request.getParameter("hora").equals("")) {
+            String temp = request.getParameter("hora");
+            hora = temp.charAt(0) + temp.charAt(1) + ":" + temp.charAt(2) + temp.charAt(3);
         }
+        else
+            existeError = true;
+        
+        if(request.getSession(true).getAttribute("restauranteActual") != null) {
+            restaurante = (String) request.getSession(true).getAttribute("restauranteActual");
+            request.getSession(true).setAttribute("restauranteActual", null);
+        } else
+            existeError = true;
+        
+        if(request.getSession(true).getAttribute("usuarioActual") != null) {
+            usuario = (String) request.getSession(true).getAttribute("usuarioActual");
+        } else
+            existeError = true;
+        
+        if(!existeError) {
+            if(realizarReserva()) {
+                System.out.println("Reserva realizada correctamente");
+                request.getSession(true).setAttribute("estadoReserva", "Reserva realizada correctamente");
+                request.getRequestDispatcher("/jsp/restaurante.jsp").forward(request, response);
+//                response.sendRedirect("/jsp/restaurante.jps?restaurante="+restaurante);
+            } else {
+                System.out.println("Reserva no realizada");
+                request.getSession(true).setAttribute("estadoReserva", "Reserva no realizada");
+                request.getRequestDispatcher("/jsp/restaurante.jsp").forward(request, response);
+//                response.sendRedirect("/jsp/restaurante.jps?restaurante="+restaurante);
+            }
+        }
+        else
+            System.out.println("Error al recibir los parametros");
+        
+    }
+    
+    private boolean realizarReserva() {
+        int mesasReservadas = 0;
+        int tamanoMesa = 0;
+        int numDeMesasAReservar = 0;
+        int numDeMesasTotales = 0;
+        String dni = "";
+        float saldo = 0;
+        
+        try {
+            // 1- comprobar si para esa fecha y hora en ese restaurante hay plazas suficientes para todos
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT mesasreservadas FROM Reserva "
+                    + "WHERE restaurante='"+restaurante+"' and fecha=datevalue('"+fecha+"') and hora='"+hora+"';");
+           
+            while(rs.next()) {
+                mesasReservadas += rs.getInt("mesasreservadas");
+            }
+            
+            Statement st2 = conn.createStatement();
+            ResultSet rs2 = st2.executeQuery("SELECT nummesas, numasientos FROM Restaurante WHERE restaurante='"+restaurante+"';");
+            
+            while(rs2.next()) {
+                numDeMesasTotales = rs2.getInt("nummesas");
+                tamanoMesa = rs2.getInt("numasientos");
+            }
+            
+            numDeMesasAReservar = personas / tamanoMesa;
+            
+            if(personas % tamanoMesa != 0)
+                numDeMesasAReservar++;
+            
+            if(numDeMesasAReservar + mesasReservadas <= numDeMesasTotales) {
+                // Hay espacio para reservar en ese restaurante
+                Statement st3 = conn.createStatement();
+                ResultSet rs3 = st3.executeQuery("SELECT dni FROM Usuario WHERE email='"+usuario+"';");
+                
+                if(rs3.next())
+                    dni = rs3.getString("dni");
+                
+                Statement st4 = conn.createStatement();
+                ResultSet rs4 = st4.executeQuery("SELECT saldo FROM Saldos WHERE dni='"+dni+"';");
+                
+                if(rs4.next())
+                    saldo = rs4.getFloat("saldo");
+                
+                if(saldo > 10.0f) {
+                    // Hay saldo para realizar la reserva
+                    Statement st5 = conn.createStatement();
+//                    st5.executeUpdate("INSERT INTO Reserva VALUES('"+restaurante"','"+usuario+"',datevalue('"+fecha+"'),'"+hora+"',false,"+numDeMesasAReservar+");");
+                    st5.executeUpdate("UPDATE Saldos SET saldo=saldo-10 WHERE dni='"+dni+"';");
+                }
+            } else 
+                return false;
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletReserva.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

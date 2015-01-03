@@ -11,8 +11,8 @@ function iniciar() {
 function validarDatos(e) {
     
     if (document.getElementById('login').checkValidity()) {        
-        e.preventDefault();
-        loguearUsuario();
+        
+
     }   
 }    
 
