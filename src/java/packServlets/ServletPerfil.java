@@ -136,11 +136,11 @@ public class ServletPerfil extends HttpServlet {
         
         if(!existeError) {
             if(actualizarUsuarioBD()){
-                request.getRequestDispatcher("/jsp/index.jsp").forward(request, response);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             } else {
                 String error = "Error al modificar los datos";
                 request.getSession(true).setAttribute("errorPerfil", error);
-                request.getRequestDispatcher("/jsp/perfil.jsp").forward(request, response);
+                request.getRequestDispatcher("perfil.jsp").forward(request, response);
             }
             
         }
