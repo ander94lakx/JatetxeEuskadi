@@ -1,5 +1,8 @@
 /* ---- PARTES COMUNES ------- */
-        
+
+        #hola{
+            color: #ffffff;
+        }
         body {
            font-family: sans-serif;
            margin-left: 0px;
