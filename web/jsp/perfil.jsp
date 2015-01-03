@@ -121,15 +121,15 @@
 
                             <label class="camposDeReg">Provincia: *</label>
                             <select name="provincia" id="provincia" required="required">
-                                <% if (provincia.equals("Alava")) {%>
+                                <% if (provincia.equals("alava")) {%>
                                     <option selected value="alava">Álava</option>
                                     <option value="guipuzcoa">Guipuzcoa</option>
                                     <option value="vizacaya">Vizcaya</option>
-                                <% if (provincia.equals("Guipuzcoa")) {%>
+                                <% if (provincia.equals("guipuzcoa")) {%>
                                     <option value="alava">Álava</option>
                                     <option selected value="guipuzcoa">Guipuzcoa</option>
                                     <option value="vizacaya">Vizcaya</option>
-                                <% } else if(provincia.equals("Vizcaya")) { %>
+                                <% } else if(provincia.equals("Vvizcaya")) { %>
                                     <option value="alava">Álava</option>
                                     <option value="guipuzcoa">Guipuzcoa</option>
                                     <option selected value="vizacaya">Vizcaya</option>
@@ -138,15 +138,15 @@
 
                             <label class="camposDeReg">Ciudad:</label>
                             <select name="ciudad" id="ciudad">
-                                <% if (ciudad.equals("Gasteiz")) {%>
+                                <% if (ciudad.equals("gasteiz")) {%>
                                     <option selected value="gasteiz">Gasteiz</option>
                                     <option value="donosti">Donosti</option>
                                     <option value="bilbo">Bilbo</option>
-                                <% if (ciudad.equals("Donosti")) {%>
+                                <% if (ciudad.equals("donosti")) {%>
                                     <option value="gasteiz">Gasteiz</option>
                                     <option selected value="donosti">Donosti</option>
                                     <option value="bilbo">Bilbo</option>
-                                <% } else if(ciudad.equals("Bilbo")) { %>
+                                <% } else if(ciudad.equals("bilbo")) { %>
                                     <option value="gasteiz">Gasteiz</option>
                                     <option value="donosti">Donosti</option>
                                     <option selected value="bilbo">Bilbo</option>

@@ -26,13 +26,13 @@
             ResultSet rs = null;
             
             switch(busqueda){
-                case "Gasteiz":
+                case "gasteiz":
                     rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
                     break;
-                case "Donosti":
+                case "donosti":
                     rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
                     break;
-                case "Bilbo":
+                case "bilbo":
                     rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
                     break;
                 default:
