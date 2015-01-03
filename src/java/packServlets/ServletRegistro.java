@@ -115,11 +115,11 @@ public class ServletRegistro extends HttpServlet {
         else
             existeError = true;
         
-        if(!request.getParameter("cimagen").equals(""))
-            imagen = request.getParameter("imagen");
-        else
-            existeError = true;
-        
+//        if(!request.getParameter("cimagen").equals(""))
+//            imagen = request.getParameter("imagen");
+//        else
+//            existeError = true;
+//        
         if(!request.getParameter("contrasena").equals(""))
             contrasena = obtenerHash(request.getParameter("contrasena"));
         else
