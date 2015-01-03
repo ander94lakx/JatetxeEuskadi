@@ -20,33 +20,34 @@
                     conn = (Connection) config.getServletContext().getAttribute("CONEXION");
                 }
                 
-            String busqueda = (String) request.getParameter("buscado");
-                
-            Statement st = conn.createStatement();
-            ResultSet rs = null;
-            
-            switch(busqueda){
-                case "gasteiz":
-                    rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
-                    break;
-                case "donosti":
-                    rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
-                    break;
-                case "bilbo":
-                    rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
-                    break;
-                default:
-                    rs = st.executeQuery("SELECT * FROM Restaurante WHERE nombre LIKE '"+busqueda+"';");
-            }
+                String busqueda = (String) request.getParameter("buscado");
 
-            while(rs.next()) {
-                String nombre = rs.getString("nombre");
-                String direccion = rs.getString("direccion");
-                String ciudad = rs.getString("ciudad");
-                String coordenadas = rs.getString("coordenadas");
+                Statement st = conn.createStatement();
+                ResultSet rs = null;
+
+                switch(busqueda){
+                    case "gasteiz":
+                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
+                        break;
+                    case "donosti":
+                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
+                        break;
+                    case "bilbo":
+                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
+                        break;
+                    default:
+                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE nombre LIKE '"+busqueda+"';");
+                }
+
+                while(rs.next()) {
+                    String nombre = rs.getString("nombre");
+                    String direccion = rs.getString("direccion");
+                    String ciudad = rs.getString("ciudad");
+                    String coordenadas = rs.getString("coordenadas");
         %>
             <%-- TO-DO: Mostrar los restaurantes aqui uno a uno --%>
         <%
+                }
             }
         %>
     </body>
