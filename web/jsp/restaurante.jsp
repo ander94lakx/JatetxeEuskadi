@@ -14,7 +14,7 @@
             } else {
                 conn = (Connection) config.getServletContext().getAttribute("CONEXION"); 
             }
-        String restaurante = (String) request.getParameter("buscado");
+            restaurante = request.getParameter("restaurante");
             session.setAttribute("restauranteActual", restaurante);
         }
 
@@ -67,7 +67,6 @@
                 <input type="submit" id="reservar" name="reservar" value="RESERVAR"><br><br>
             </form>
         <%
-                }
             }
         %>
         <% if(session.getAttribute("estadoReserva") != null) { %>
