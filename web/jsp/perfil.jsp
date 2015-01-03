@@ -125,7 +125,7 @@
                                     <option selected value="alava">Álava</option>
                                     <option value="guipuzcoa">Guipuzcoa</option>
                                     <option value="vizacaya">Vizcaya</option>
-                                <% if (provincia.equals("guipuzcoa")) {%>
+                                <% } else if (provincia.equals("guipuzcoa")) {%>
                                     <option value="alava">Álava</option>
                                     <option selected value="guipuzcoa">Guipuzcoa</option>
                                     <option value="vizacaya">Vizcaya</option>
@@ -142,7 +142,7 @@
                                     <option selected value="gasteiz">Gasteiz</option>
                                     <option value="donosti">Donosti</option>
                                     <option value="bilbo">Bilbo</option>
-                                <% if (ciudad.equals("donosti")) {%>
+                                <% } else if (ciudad.equals("donosti")) {%>
                                     <option value="gasteiz">Gasteiz</option>
                                     <option selected value="donosti">Donosti</option>
                                     <option value="bilbo">Bilbo</option>
