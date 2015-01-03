@@ -398,14 +398,15 @@
         
         #divRestaurantes{
            margin-left: 50px;
-           width: 150px;
+           width: 200px;
            height: 300px;
+           float: left;
         }
         
         #imagenRest{
             margin: 5px;
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             background-image: url("../img/Akelarre.jpg");
         }
         
