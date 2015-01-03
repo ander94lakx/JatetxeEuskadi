@@ -23,7 +23,7 @@
                 </div>
                 <div id="divRegistro">
                     <fieldset id="fieldsetRegistro">
-                        <form name="registro" id="registro" method="post" action="Registrarse">
+                        <form name="registro" id="registro" method="post" action="../Registrarse">
 
                             <label class="camposDeReg">Eres: *</label>
                             <input type="radio" name="sexo" id="h" value="Hombre" required="required">Hombre

@@ -19,7 +19,7 @@
             <div id="webLogin">
                 <div id="divLogin">
                     <fieldset id="fieldsetLogin">
-                        <form name="login" id="login" method="post" action="Loguearse">
+                        <form name="login" id="login" method="post" action="../Loguearse">
 
                             <label class="camposDeReg">Email:  </label>
                             <input type="email" name="email" id="email" 

@@ -55,7 +55,7 @@
             Restaurante: <%=nombre%> <br>
             Dirección: <%=direccion%> <br>
             Ciudad: <%=ciudad%> <br>
-            <form name="reserva" id="reserva" method="post" action="Reservar">
+            <form name="reserva" id="reserva" method="post" action="../Reservar">
                 Personas: <input type="number" id="personas" name="personas" min="1" max="8"><br><br>
                 Fecha: <input type="date" name="fecha" id="fecha"><br><br>
                 Hora: <select name="hora" id="hora">

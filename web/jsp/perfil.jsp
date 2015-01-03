@@ -75,7 +75,7 @@
                 </div>
                 <div id="divPerfil">
                     <fieldset id="fieldsetPerfil">
-                        <form name="perfil" id="perfil" method="post" action="ModificarPerfil">
+                        <form name="perfil" id="perfil" method="post" action="../ModificarPerfil">
 
                             <label class="camposDeReg">Eres: *</label>
                             <% if(sexo.equals("h")) { %>
