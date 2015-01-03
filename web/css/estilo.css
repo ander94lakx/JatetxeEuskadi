@@ -1,7 +1,10 @@
 /* ---- PARTES COMUNES ------- */
 
         #hola{
+            margin-top: 10px;
+            margin-right: 20px;
             color: #ffffff;
+            float: left;
         }
         body {
            font-family: sans-serif;
@@ -427,4 +430,10 @@
             margin: 0;
             width: 100%;
             height: 500px;
+        }
+        
+        #webHistorico{
+            text-align: center;
+            width: 50%;
+            height: 400px;
         }

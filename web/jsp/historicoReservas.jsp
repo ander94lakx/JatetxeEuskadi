@@ -23,6 +23,7 @@
             <% } %>
         </nav>
         <section id="sectionHistorico">
+            <div id="webHistorico">
         <% 
             Connection conn;
             if(config.getServletContext().getAttribute("CONEXION") == null) {
@@ -83,6 +84,7 @@
         <%
             }
         %>
+            </div>
         </section>
         <footer id="footerHistorico">
             <br>
