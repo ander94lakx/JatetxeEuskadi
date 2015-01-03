@@ -38,13 +38,13 @@
 //                    default:
 //                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE nombre LIKE '"+busqueda+"';");
 //                }
-                if(busqueda == "gasteiz"){
+                if(busqueda.equals("gasteiz")){
                     rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
                 }
-                else if(busqueda == "bilbo"){
+                else if(busqueda.equals("bilbo")){
                     rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
                 }
-                else if(busqueda == "donosti"){
+                else if(busqueda.equals("donosti")){
                     rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
                 }
                 else{
