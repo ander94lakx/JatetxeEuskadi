@@ -51,7 +51,6 @@
                 String coordenadas = rs.getString("coordenadas");
         
         %>
-            <%-- TO-DO: Mostrar todfa la info del restaurante y los botones necesarios --%>
             Restaurante: <%=nombre%> <br>
             Dirección: <%=direccion%> <br>
             Ciudad: <%=ciudad%> <br>
