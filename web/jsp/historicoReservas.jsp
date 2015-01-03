@@ -22,22 +22,51 @@
             if(session.getAttribute("usuarioActual") != null) {
                 String usuario = (String) session.getAttribute("usuarioActual");
                 Statement st = conn.createStatement();
-                ResultSet rs = rs = st.executeQuery("SELECT * FROM Restaurante WHERE email='"+usuario+"';");
+                ResultSet rs = rs = st.executeQuery("SELECT * FROM Reserva WHERE usuario='"+usuario+"';");
 
-
+        %>
+        <table border="3">
+            <thead>
+                <tr>
+                    <th>Restaurante</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody> 
+        <%  
                 while(rs.next()) {
                     String restaurante = rs.getString("restaurante");
                     String usu = rs.getString("usuario");
                     java.sql.Date fecha = rs.getDate("fecha");
-                    boolean coordenadas = rs.getBoolean("cancelada");
+                    boolean cancelada = rs.getBoolean("cancelada");
+                    java.util.Date fechaActual = new java.util.Date();
+                    java.util.Date fechaReservaUtil = new java.util.Date(fecha.getTime());
+                    String estado = null;
 
-            
-                
-            
         %>
-            
+                <tr>
+                    <td><%=restaurante%></td>
+                    <td><%=fecha%></td>
+                    <%
+                    if(cancelada){
+                        estado = "Cancelada";
+                    }else{
+                        if(fechaActual.compareTo(fechaReservaUtil) > 0){
+                            estado = "Realizada";
+                        } else{
+                            estado = "Pendiente";
+                        }
+                    }
+                    %>
+                    <td><%=estado%></td>
+                </tr>
         <%
                 }
+        %>
+            </tbody>
+        </table>
+        <%
             }
         %>
     </body>
