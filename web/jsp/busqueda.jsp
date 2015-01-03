@@ -36,7 +36,7 @@
                     rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
                     break;
                 default:
-                    rs = st.executeQuery("SELECT * FROM Restaurante WHERE email LIKE '"+busqueda+"';");
+                    rs = st.executeQuery("SELECT * FROM Restaurante WHERE nombre LIKE '"+busqueda+"';");
             }
 
             while(rs.next()) {
