@@ -23,7 +23,7 @@
             <div id="divImagenes">
                 <br><br>
                 <div id="busqueda">
-                    <form id="formBusqueda" name="formBusqueda" method="get" action="/jsp/busqueda.jsp">
+                    <form id="formBusqueda" name="formBusqueda" method="get" action="busqueda.jsp">
                         <input type="text" id="buscado" name="buscado" placeholder="Busca tu restaurante">
                         <!--<input type="submit" id="botonBuscar" name="botonBuscar" value="BUSCAR">-->
                         <input type="submit" id="botonBuscar" name="botonBuscar" value="BUSCAR">
@@ -31,9 +31,9 @@
                 </div>
                 <br><br>
                 <h1 id="texto">La mejor Web para reservar restaurantes</h1>
-                <img id="gasteizN">
-                <img id="bilbaoN">
-                <img id="donostiN">
+                <a href="busqueda.jsp?buscado=gasteiz"><img id="gasteizN"></a>
+                <a href="busqueda.jsp?buscado=bilbo"><img id="bilbaoN"></a>
+                <a href="busqueda.jsp?buscado=donosti"><img id="donostiN"></a>
             </div>
         </section>
         <footer id="footerIndex">

@@ -8,7 +8,7 @@
     <body>
         
         <%@page import="java.sql.*" %>
-        
+        <h1>Realiza una reserva entre los mejores restaurantes de Euskadi</h1><br>
         <% 
             if(request.getParameter("buscado") != null) {
                 Connection conn;
@@ -25,18 +25,30 @@
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
 
-                switch(busqueda){
-                    case "gasteiz":
-                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
-                        break;
-                    case "donosti":
-                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
-                        break;
-                    case "bilbo":
-                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
-                        break;
-                    default:
-                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE nombre LIKE '"+busqueda+"';");
+//                switch(busqueda){
+//                    case "gasteiz":
+//                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
+//                        break;
+//                    case "donosti":
+//                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
+//                        break;
+//                    case "bilbo":
+//                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
+//                        break;
+//                    default:
+//                        rs = st.executeQuery("SELECT * FROM Restaurante WHERE nombre LIKE '"+busqueda+"';");
+//                }
+                if(busqueda == "gasteiz"){
+                    rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
+                }
+                else if(busqueda == "bilbo"){
+                    rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
+                }
+                else if(busqueda == "donosti"){
+                    rs = st.executeQuery("SELECT * FROM Restaurante WHERE ciudad='"+busqueda+"';");
+                }
+                else{
+                    rs = st.executeQuery("SELECT * FROM Restaurante WHERE nombre LIKE '"+busqueda+"';"); 
                 }
 
                 while(rs.next()) {
@@ -45,7 +57,9 @@
                     String ciudad = rs.getString("ciudad");
                     String coordenadas = rs.getString("coordenadas");
         %>
-            <%-- TO-DO: Mostrar los restaurantes aqui uno a uno --%>
+        Restaurante: <a href="restaurante.jsp?restaurante=<%=nombre%>"><%=nombre%></a><br>
+        Dirección: <%=direccion%><br>
+        Ciudad: <%=ciudad%><br>
         <%
                 }
             }
