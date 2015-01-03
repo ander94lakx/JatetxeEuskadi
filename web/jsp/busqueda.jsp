@@ -22,6 +22,7 @@
         </nav>
         <section id="sectionBusqueda">
             <h1>Realiza una reserva entre los mejores restaurantes de Euskadi</h1><br>
+            <div id="webBusqueda">
         <% 
             if(request.getParameter("buscado") != null) {
                 Connection conn;
@@ -63,20 +64,25 @@
                 else{
                     rs = st.executeQuery("SELECT * FROM Restaurante WHERE nombre LIKE '%"+busqueda+"%';"); 
                 }
-
                 while(rs.next()) {
                     String nombre = rs.getString("nombre");
                     String direccion = rs.getString("direccion");
                     String ciudad = rs.getString("ciudad");
                     String coordenadas = rs.getString("coordenadas");
         %>
-        Restaurante: <a href="restaurante.jsp?restaurante=<%=nombre%>"><%=nombre%></a><br>
+        <div id="divRestaurantes">
+            <div id="imagenRest">
+                
+            </div>
+        <a href="restaurante.jsp?restaurante=<%=nombre%>"><%=nombre%></a><br>
         Dirección: <%=direccion%><br>
         Ciudad: <%=ciudad%><br>
+        </div>
         <%
                 }
             }
         %>
+            </div>
         </section>
         <footer id="footerBusqueda">
             <br>

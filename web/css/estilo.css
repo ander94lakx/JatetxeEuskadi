@@ -390,6 +390,24 @@
             width: 100%;
             height: 500px;
         }
+        #webBusqueda{
+            margin: 0;
+            width: 100%;
+            height: 400px;
+        }
+        
+        #divRestaurantes{
+           margin-left: 50px;
+           width: 150px;
+           height: 300px;
+        }
+        
+        #imagenRest{
+            margin: 5px;
+            width: 100px;
+            height: 100px;
+            background-image: url("../img/Akelarre.jpg");
+        }
         
         /* -------- RESTAURANTE--------- */
         
