@@ -23,7 +23,7 @@
             <div id="divImagenes">
                 <br><br>
                 <div id="busqueda">
-                    <form id="formBusqueda" name="formBusqueda" method="get">
+                    <form id="formBusqueda" name="formBusqueda" method="get" action="/jsp/busqueda.jsp">
                         <input type="text" id="buscado" name="buscado" placeholder="Busca tu restaurante">
                         <!--<input type="submit" id="botonBuscar" name="botonBuscar" value="BUSCAR">-->
                         <input type="submit" id="botonBuscar" name="botonBuscar" value="BUSCAR">
