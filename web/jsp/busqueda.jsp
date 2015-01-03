@@ -6,9 +6,22 @@
         <title>Busqueda</title>
     </head>
     <body>
-        
         <%@page import="java.sql.*" %>
-        <h1>Realiza una reserva entre los mejores restaurantes de Euskadi</h1><br>
+        <header id="headerBusqueda">
+           <img id="logo">
+        </header>
+        <nav id="navBusqueda">
+            <% if(session.getAttribute("usuarioActual") == null) { %>
+                <a id="linkRegistro" class="linksDelNav" href="registro.jsp">REGISTRARSE</a>
+                <a id="linkLogin" class="linksDelNav" href="login.jsp">INICIAR SESION</a>
+                <% } else { %>
+                <label id="hola">Hola, <%= (String) session.getAttribute("usuarioActual")%></label>
+                <a id="linkPerfil" class="linksDelNav" href="perfil.jsp">TU PERFIL</a>
+                <a id="linkeHistorico" class="linksDelNav" href="historicoReservas.jsp">HISTORIAL DE RESERVAS</a>
+            <% } %>
+        </nav>
+        <section id="sectionBusqueda">
+            <h1>Realiza una reserva entre los mejores restaurantes de Euskadi</h1><br>
         <% 
             if(request.getParameter("buscado") != null) {
                 Connection conn;
@@ -64,5 +77,11 @@
                 }
             }
         %>
+        </section>
+        <footer id="footerBusqueda">
+            <br>
+            <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" id="licencia">CC BY-NC-ND 3.0</a>
+            <label id="autores">Copyright © 2014 Julen Aristimuño y Ander Granado</label>
+        </footer>
     </body>
 </html>

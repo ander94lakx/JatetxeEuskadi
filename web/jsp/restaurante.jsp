@@ -24,6 +24,19 @@
         <title><%=restaurante%></title>
     </head>
     <body>
+        <header id="headerRestaurante">
+           <img id="logo">
+        </header>
+        <nav id="navRestaurante">
+            <% if(session.getAttribute("usuarioActual") == null) { %>
+                <a id="linkRegistro" class="linksDelNav" href="registro.jsp">REGISTRARSE</a>
+                <a id="linkLogin" class="linksDelNav" href="login.jsp">INICIAR SESION</a>
+                <% } else { %>
+                <label id="hola">Hola, <%= (String) session.getAttribute("usuarioActual")%></label>
+                <a id="linkPerfil" class="linksDelNav" href="perfil.jsp">TU PERFIL</a>
+            <% } %>
+        </nav>
+        <section id="sectionRestaurante">
         <%        
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM Restaurante WHERE nombre='"+restaurante+"';");
@@ -53,5 +66,11 @@
         <%
             }
         %>
+        </section>
+        <footer id="footerRestaurante">
+            <br>
+            <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" id="licencia">CC BY-NC-ND 3.0</a>
+            <label id="autores">Copyright © 2014 Julen Aristimuño y Ander Granado</label>
+        </footer>
     </body>
 </html>

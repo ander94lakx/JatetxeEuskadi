@@ -8,7 +8,20 @@
     <body>
         <%@page import="java.sql.*" %>
         <%@page import="java.util.*" %>
-        
+        <header id="headerHistorico">
+           <img id="logo">
+        </header>
+        <nav id="navHistorico">
+            <% if(session.getAttribute("usuarioActual") == null) { %>
+                <a id="linkRegistro" class="linksDelNav" href="registro.jsp">REGISTRARSE</a>
+                <a id="linkLogin" class="linksDelNav" href="login.jsp">INICIAR SESION</a>
+                <% } else { %>
+                <label id="hola">Hola, <%= (String) session.getAttribute("usuarioActual")%></label>
+                <a id="linkPerfil" class="linksDelNav" href="perfil.jsp">TU PERFIL</a>
+                <a id="linkeHistorico" class="linksDelNav" href="historicoReservas.jsp">HISTORIAL DE RESERVAS</a>
+            <% } %>
+        </nav>
+        <section id="sectionHistorico">
         <% 
             Connection conn;
             if(config.getServletContext().getAttribute("CONEXION") == null) {
@@ -69,5 +82,11 @@
         <%
             }
         %>
+        </section>
+        <footer id="footerHistorico">
+            <br>
+            <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" id="licencia">CC BY-NC-ND 3.0</a>
+            <label id="autores">Copyright © 2014 Julen Aristimuño y Ander Granado</label>
+        </footer>
     </body>
 </html>
