@@ -43,6 +43,8 @@
         <section id="sectionRestaurante">
             <div id="webRestaurante">
             <img id="imagenSection" src="../img/<%=restaurante%>.jpg">
+            </div>
+            <div id="restauranteDatos">
         <%        
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM Restaurante WHERE nombre='"+restaurante+"';");
