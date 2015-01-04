@@ -16,6 +16,7 @@
         </header>
         <nav id="navPerfil">
             <a id="linkSalir" class="linksDelNav" href="../Logout">SALIR</a>
+            <a id="linkInicio" class="linksDelNav" href="index.jsp">INICIO</a>
             <a id="linkeHistorico" class="linksDelNav" href="historicoReservas.jsp">HISTORIAL DE RESERVAS</a>
             <a id="linkPerfil" class="linksDelNav" href="perfil.jsp">TU PERFIL</a>
         </nav>
