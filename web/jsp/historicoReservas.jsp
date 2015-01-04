@@ -48,6 +48,8 @@
                 <tr>
                     <th>Restaurante</th>
                     <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Numero de mesas</th>
                     <th>Estado</th>
                 </tr>
             </thead>
@@ -60,12 +62,16 @@
                     boolean cancelada = rs.getBoolean("cancelada");
                     java.util.Date fechaActual = new java.util.Date();
                     java.util.Date fechaReservaUtil = new java.util.Date(fecha.getTime());
+                    String hora = rs.getString("hora");
                     String estado = null;
+                    int numMesas = rs.getInt("mesasreservadas");
 
         %>
                 <tr>
                     <td><%=restaurante%></td>
                     <td><%=fecha%></td>
+                    <td><%=hora%></td>
+                    <td><%=numMesas%></td>
                     <%
                     if(cancelada){
                         estado = "Cancelada";
