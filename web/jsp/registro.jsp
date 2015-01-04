@@ -52,7 +52,7 @@
                                    title="El email introducido no tiene un formato de email valido"
                                    required="required" ><br><br>
 
-                            <label class="camposDeReg">Contrase√±a: *</label>
+                            <label class="camposDeReg">ContraseÒa: *</label>
                             <input type="password" name="contrasena" id="contrasena" 
                                    pattern="[a-zA-Z0-9]{6,25}" 
                                    title="La contrasena tiene que tener entre 6 y 25 caracteres (solo caracteres alfanum√©ricos"
@@ -60,21 +60,21 @@
 
                             <label class="camposDeReg">Provincia: *</label>
                             <select name="provincia" id="provincia" required="required">
-                                <option selected value="">Elige una opci√≥n</option>
-                                <option value="alava">√Ålava</option>
+                                <option selected value="">Elige una opciÛn</option>
+                                <option value="alava">¡lava</option>
                                 <option value="guipuzcoa">Guipuzcoa</option>
                                 <option value="vizacaya">Vizcaya</option>
                             </select><br><br>
 
                             <label class="camposDeReg">Ciudad:</label>
                             <select name="ciudad" id="ciudad">
-                                <option selected value="">Elige una opci√≥n</option>
+                                <option selected value="">Elige una opciÛn</option>
                                 <option value="gasteiz">Gasteiz</option>
                                 <option value="donosti">Donosti</option>
                                 <option value="bilbo">Bilbo</option>
                             </select><br><br>
 
-                            <label class="camposDeReg">C√≥digo Postal: *</label>
+                            <label class="camposDeReg">CÛdigo Postal: *</label>
                             <input type="text" name="codigopostal" id="codigopostal" required="required"
                                    pattern="[0-9]{5}" 
                                    title="El c√≥digo postal no es v√°lido"><br><br>
@@ -101,7 +101,7 @@
         <footer id="footerRegistro">
             <br>
             <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" id="licencia">CC BY-NC-ND 3.0</a>
-            <label id="autores">Copyright ¬© 2014 Julen Aristimu√±o y Ander Granado</label>
+            <label id="autores">Copyright © 2014 Julen AristimuÒo y Ander Granado</label>
         </footer>
     </body>
 </html>

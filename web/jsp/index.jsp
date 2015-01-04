@@ -16,9 +16,9 @@
                 <a id="linkLogin" class="linksDelNav" href="login.jsp">INICIAR SESION</a>
                 <% } else { %>
                 <label id="hola">Hola, <%= (String) session.getAttribute("usuarioActual")%></label>
-                <a id="linkPerfil" class="linksDelNav" href="perfil.jsp">TU PERFIL</a>
-                <a id="linkeHistorico" class="linksDelNav" href="historicoReservas.jsp">HISTORIAL DE RESERVAS</a>
                 <a id="linkSalir" class="linksDelNav" href="../Logout">SALIR</a>
+                <a id="linkeHistorico" class="linksDelNav" href="historicoReservas.jsp">HISTORIAL DE RESERVAS</a>
+                <a id="linkPerfil" class="linksDelNav" href="perfil.jsp">TU PERFIL</a>
             <% } %>
         </nav>
         <section id="sectionIndex">
@@ -41,7 +41,7 @@
         <footer id="footerIndex">
             <br>
             <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" id="licencia">CC BY-NC-ND 3.0</a>
-            <label id="autores">Copyright Â© 2014 Julen AristimuÃ±o y Ander Granado</label>
+            <label id="autores">Copyright © 2014 Julen Aristimuño y Ander Granado</label>
         </footer>
     </body>
 </html>

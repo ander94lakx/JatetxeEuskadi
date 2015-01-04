@@ -27,7 +27,7 @@
                                    title="El email introducido no tiene un formato de email valido"
                                    required="required"><br><br>
 
-                            <label class="camposDeReg">ContraseÃ±a:  </label>
+                            <label class="camposDeReg">Contraseña:  </label>
                             <input type="password" name="contrasena" id="contrasena" 
                                    pattern="[a-zA-Z0-9]{6,25}" 
                                    title="La contrasena tiene que tener entre 6 y 25 caracteres (solo caracteres alfanumÃ©ricos"
@@ -49,7 +49,7 @@
         <footer id="footerLogin">
             <br>
             <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" id="licencia">CC BY-NC-ND 3.0</a>
-            <label id="autores">Copyright Â© 2014 Julen AristimuÃ±o y Ander Granado</label>
+            <label id="autores">Copyright © 2014 Julen Aristimuño y Ander Granado</label>
         </footer>
     </body>
 </html>

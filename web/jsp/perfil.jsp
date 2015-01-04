@@ -15,8 +15,9 @@
             <img id="logo">    
         </header>
         <nav id="navPerfil">
-            <a id="linkInicio" class="linksDelNav" href="index.jsp">INICIO</a>
             <a id="linkSalir" class="linksDelNav" href="../Logout">SALIR</a>
+            <a id="linkeHistorico" class="linksDelNav" href="historicoReservas.jsp">HISTORIAL DE RESERVAS</a>
+            <a id="linkPerfil" class="linksDelNav" href="perfil.jsp">TU PERFIL</a>
         </nav>
         <br>
         <section id="sectionPerfil">
@@ -114,7 +115,7 @@
                                    value="<%=email%>"
                                    disabled><br><br>
 
-                            <label class="camposDeReg">Contrase√±a: *</label>
+                            <label class="camposDeReg">ContraseÒa: *</label>
                             <input type="password" name="contrasena" id="contrasena" 
                                    pattern="[a-zA-Z0-9-]{6,25}" 
                                    title="La contrasena tiene que tener entre 6 y 25 caracteres (solo caracteres alfanum√©ricos"
@@ -123,15 +124,15 @@
                             <label class="camposDeReg">Provincia: *</label>
                             <select name="provincia" id="provincia" required="required">
                                 <% if (provincia.equals("alava")) {%>
-                                    <option selected value="alava">√Ålava</option>
+                                    <option selected value="alava">¡lava</option>
                                     <option value="guipuzcoa">Guipuzcoa</option>
                                     <option value="vizacaya">Vizcaya</option>
                                 <% } else if (provincia.equals("guipuzcoa")) {%>
-                                    <option value="alava">√Ålava</option>
+                                    <option value="alava">¡lava</option>
                                     <option selected value="guipuzcoa">Guipuzcoa</option>
                                     <option value="vizacaya">Vizcaya</option>
                                 <% } else if(provincia.equals("Vvizcaya")) { %>
-                                    <option value="alava">√Ålava</option>
+                                    <option value="alava">¡lava</option>
                                     <option value="guipuzcoa">Guipuzcoa</option>
                                     <option selected value="vizacaya">Vizcaya</option>
                                 <% } %>
@@ -154,12 +155,12 @@
                                 <% } %>
                             </select><br><br>
                             
-                            <label class="camposDeReg">Direcci√≥n:</label>
+                            <label class="camposDeReg">DirecciÛn:</label>
                             <textarea id="direccion" rows="3" cols="47" form= "perfil" wrap= "soft">
                                 <%=direccion%>
                             </textarea><br><br>
 
-                            <label class="camposDeReg">C√≥digo Postal: *</label>
+                            <label class="camposDeReg">CÛdigo Postal: *</label>
                             <input type="text" name="codigopostal" id="codigopostal" required="required"
                                    pattern="[0-9]{5}" 
                                    title="El c√≥digo postal no es v√°lido"
@@ -237,7 +238,7 @@
        <footer id="footerPerfil">
             <br>
             <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" id="licencia">CC BY-NC-ND 3.0</a>
-            <label id="autores">Copyright ¬© 2014 Julen Aristimu√±o y Ander Granado</label>
+            <label id="autores">Copyright © 2014 Julen AristimuÒo y Ander Granado</label>
         </footer>
     </body>
 </html>
