@@ -17,6 +17,9 @@
         <nav id="navPerfil">
             <a id="linkInicio" class="linksDelNav" href="index.jsp">INICIO</a>
         </nav>
+        <br>
+        <section id="sectionPerfil">
+            <div id="webPerfil">
         <% 
             if(session.getAttribute("usuarioActual") != null) {
                 Connection conn;
@@ -66,9 +69,6 @@
                 }
     
         %>
-        <br>
-        <section id="sectionPerfil">
-            <div id="webPerfil">
                <div id="imagen">
                     <div id="caja"></div>
                     <input type="file" id="archivo">
@@ -228,7 +228,7 @@
                             <div id="dato"></div><br><br>
                 </div>
         <% } else { %>
-        <label class="mensajesDeError">Error: no tiene acceso a esta pagina, no está logueado</label>
+        <label class="mensajesDeError">Error: no tiene acceso a esta pagina, no está logueado</label>     
         <% } %>
             </div>
         </section>
