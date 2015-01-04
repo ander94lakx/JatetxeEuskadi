@@ -101,7 +101,7 @@
         <%
             }
         %>
-        <input type="submit" value="CANCELAR RESERVA" name="cancelarReserva" />
+        <input type="submit" value="CANCELAR RESERVA" name="cancelarReserva" id="cancelarReserva"/>
                 </form>
             </div>
         </section>

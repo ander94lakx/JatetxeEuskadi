@@ -452,6 +452,25 @@
             float: left;
         }
         
+        #reservar{
+            
+            height: 30px;
+            width: 150px;
+            color: #ffffff;
+            background: #00cc6f;
+            border: solid 1px #666;
+        }
+        
+        #reservar:hover{
+            
+            height: 30px;
+            width: 150px;
+            color: #00cc6f;
+            background: #ffffff;
+            border: solid 1px #666;
+            font-size: 17px;
+        }
+        
         /* -------- HISTORICO--------- */
         
         #sectionHistorico{
@@ -465,5 +484,24 @@
             margin-left:500px;
             width: 400px;
             height: 400px;
+        }
+        
+        #cancelarReserva{
+            
+            height: 30px;
+            width: 150px;
+            color: #ffffff;
+            background: #00cc6f;
+            border: solid 1px #666;
+        }
+        
+        #cancelarReserva:hover{
+            
+            height: 30px;
+            width: 150px;
+            color: #00cc6f;
+            background: #ffffff;
+            border: solid 1px #666;
+            font-size: 17px;
         }
         
