@@ -42,7 +42,7 @@ function mostrarCoordenada(posicion) {
     var direccion = posicion.coords.latitude + "," + posicion.coords.longitude;
     var mapa = "http://maps.googleapis.com/maps/api/staticmap?center="+direccion+"&zoom=14&size=320x320&sensor=false";
     document.getElementById("dato").innerHTML = "<img src='"+mapa+"'>";
-    ponerEnDireccion(direccion);
+//    ponerEnDireccion(direccion);
 }
 
 function ponerEnDireccion(dir) {
