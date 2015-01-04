@@ -70,14 +70,12 @@
                     String ciudad = rs.getString("ciudad");
                     String coordenadas = rs.getString("coordenadas");
         %>
-        <div id="divRestaurantes">
-            <img id="imagenRest" src="../img/<%=nombre%>.jpg">
-                
-            </div>
-        <a href="restaurante.jsp?restaurante=<%=nombre%>"><%=nombre%></a><br>
-        Dirección: <%=direccion%><br>
-        Ciudad: <%=ciudad%><br>
-        </div>
+                <div id="divRestaurantes">
+                    <img id="imagenRest" src="../img/<%=nombre%>.jpg">
+                <a href="restaurante.jsp?restaurante=<%=nombre%>"><%=nombre%></a><br>
+                Dirección: <%=direccion%><br>
+                Ciudad: <%=ciudad%><br>
+                </div>
         <%
                 }
             }
