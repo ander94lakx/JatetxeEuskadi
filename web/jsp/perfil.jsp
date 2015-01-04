@@ -16,6 +16,7 @@
         </header>
         <nav id="navPerfil">
             <a id="linkInicio" class="linksDelNav" href="index.jsp">INICIO</a>
+            <a id="linkSalir" class="linksDelNav" href="../Logout">SALIR</a>
         </nav>
         <br>
         <section id="sectionPerfil">

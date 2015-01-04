@@ -18,6 +18,7 @@
                 <label id="hola">Hola, <%= (String) session.getAttribute("usuarioActual")%></label>
                 <a id="linkPerfil" class="linksDelNav" href="perfil.jsp">TU PERFIL</a>
                 <a id="linkeHistorico" class="linksDelNav" href="historicoReservas.jsp">HISTORIAL DE RESERVAS</a>
+                <a id="linkSalir" class="linksDelNav" href="../Logout">SALIR</a>
             <% } %>
         </nav>
         <section id="sectionIndex">
