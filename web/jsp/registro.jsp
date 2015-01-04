@@ -12,7 +12,7 @@
             <img id="logo">
         </header>
         <nav id="navRegistro">
-            
+            <a id="linkInicio" class="linksDelNav" href="index.jsp">INICIO</a>
         </nav>
         <br>
         <section id="sectionRegistro">

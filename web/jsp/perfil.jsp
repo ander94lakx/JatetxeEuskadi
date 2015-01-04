@@ -15,7 +15,7 @@
             <img id="logo">    
         </header>
         <nav id="navPerfil">
-            
+            <a id="linkInicio" class="linksDelNav" href="index.jsp">INICIO</a>
         </nav>
         <% 
             if(session.getAttribute("usuarioActual") != null) {

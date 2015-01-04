@@ -31,6 +31,7 @@
            <img id="logo">
         </header>
         <nav id="navRestaurante">
+            <a id="linkInicio" class="linksDelNav" href="index.jsp">INICIO</a>
             <% if(session.getAttribute("usuarioActual") == null) { %>
                 <a id="linkRegistro" class="linksDelNav" href="registro.jsp">REGISTRARSE</a>
                 <a id="linkLogin" class="linksDelNav" href="login.jsp">INICIAR SESION</a>
