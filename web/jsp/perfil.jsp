@@ -82,11 +82,11 @@
 
                             <label class="camposDeReg">Eres: *</label>
                             <% if(sexo.equals("h")) { %>
-                                <input type="radio" name="sexo" id="h" value="Hombre" required="required" checked="checked">Hombre
-                                <input type="radio" name="sexo" id="m" value="Mujer">Mujer<br><br>
+                                <input type="radio" name="sexo" id="h" value="hombre" required="required" checked="checked">Hombre
+                                <input type="radio" name="sexo" id="m" value="mujer">Mujer<br><br>
                             <% } else if(sexo.equals("m")) { %>
-                                <input type="radio" name="sexo" id="h" value="Hombre" required="required">Hombre
-                                <input type="radio" name="sexo" id="m" value="Mujer" checked="checked">Mujer<br><br>
+                                <input type="radio" name="sexo" id="h" value="hombre" required="required">Hombre
+                                <input type="radio" name="sexo" id="m" value="mujer" checked="checked">Mujer<br><br>
                             <% } %>
                             <label class="camposDeReg">Apellido: *</label>
                             <input type="text" name="apellido" id="apellido" 
