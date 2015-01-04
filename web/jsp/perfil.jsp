@@ -115,7 +115,7 @@
 
                             <label class="camposDeReg">Contraseña: *</label>
                             <input type="password" name="contrasena" id="contrasena" 
-                                   pattern="[a-zA-Z0-9]{6,25}" 
+                                   pattern="[a-zA-Z0-9-]{6,25}" 
                                    title="La contrasena tiene que tener entre 6 y 25 caracteres (solo caracteres alfanuméricos"
                                    value="<%=contrasena%>"><br><br>
 
