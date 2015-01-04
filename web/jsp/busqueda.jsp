@@ -21,7 +21,7 @@
             <% } %>
         </nav>
         <section id="sectionBusqueda">
-            <h1>Realiza una reserva entre los mejores restaurantes de Euskadi</h1><br>
+            <h1 id="textoBusqueda">Realiza una reserva entre los mejores restaurantes de Euskadi</h1><br>
             <div id="webBusqueda">
         <% 
             if(request.getParameter("buscado") != null) {

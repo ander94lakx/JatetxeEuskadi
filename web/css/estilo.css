@@ -7,6 +7,11 @@
             color: #ffffff;
             float: left;
         }
+        
+        #textoBusqueda{
+            text-align: center;
+        }
+        
         body {
            font-family: sans-serif;
            margin-left: 0px;
@@ -432,13 +437,15 @@
         }
         
         #webRestaurante{
+            margin-top: 40px;
             margin-left: 30px;
-            width: 500px;
-            height: 500px;
+            width: 400px;
+            height: 400px;
             float: left;
         }
         
         #restauranteDatos{
+            margin-top: 40px;
             margin-left: 30px;
             width: 500px;
             height: 500px;
