@@ -157,7 +157,7 @@
                             </select><br><br>
                             
                             <label class="camposDeReg">Dirección:</label>
-                            <textarea id="direccion" rows="3" cols="47" form= "perfil" wrap= "soft">
+                            <textarea id="direccion" rows="3" cols="47" form= "perfil" wrap= "soft" required="required">
                                 <%=direccion%>
                             </textarea><br><br>
 
