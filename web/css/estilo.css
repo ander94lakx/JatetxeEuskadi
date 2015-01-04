@@ -431,17 +431,17 @@
             float: left;
         }
         
-        #restauranteDatos{
-             margin: 0;
-            width: 100%;
+        #webRestaurante{
+            margin-left: 30px;
+            width: 500px;
             height: 500px;
-            float: left;
         }
         
-        #webRestaurante{
-            margin: 0;
-            width: 100%;
+        #restauranteDatos{
+            margin-left: 30px;
+            width: 500px;
             height: 500px;
+            float: left;
         }
         
         /* -------- HISTORICO--------- */
