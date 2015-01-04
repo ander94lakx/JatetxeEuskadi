@@ -43,7 +43,7 @@
         </nav>
         <section id="sectionRestaurante">
             <div id="webRestaurante">
-            <img id="imagenSection" src="../img/<%=restaurante%>.jpg">
+                <img id="imagenSection" src="../img/<%=restaurante%>.jpg" height="400" width="400">
             </div>
             <div id="restauranteDatos">
         <%        
