@@ -12,11 +12,10 @@
         <%@page import="java.sql.*" %>
        
         <header id="headerperfil">
-            <img id="logo">    
+            <a href="index.jsp"><img id="logo"></a>  
         </header>
         <nav id="navPerfil">
             <a id="linkSalir" class="linksDelNav" href="../Logout">SALIR</a>
-            <a id="linkInicio" class="linksDelNav" href="index.jsp">INICIO</a>
             <a id="linkeHistorico" class="linksDelNav" href="historicoReservas.jsp">HISTORIAL DE RESERVAS</a>
             <a id="linkPerfil" class="linksDelNav" href="perfil.jsp">TU PERFIL</a>
         </nav>

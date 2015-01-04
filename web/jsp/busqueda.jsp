@@ -8,10 +8,9 @@
     <body>
         <%@page import="java.sql.*" %>
         <header id="headerBusqueda">
-           <img id="logo">
+           <a href="index.jsp"><img id="logo"></a>
         </header>
         <nav id="navBusqueda">
-            <a id="linkInicio" class="linksDelNav" href="index.jsp">INICIO</a>
             <% if(session.getAttribute("usuarioActual") == null) { %>
                 <a id="linkRegistro" class="linksDelNav" href="registro.jsp">REGISTRARSE</a>
                 <a id="linkLogin" class="linksDelNav" href="login.jsp">INICIAR SESION</a>

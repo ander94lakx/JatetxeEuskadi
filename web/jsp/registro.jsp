@@ -9,10 +9,9 @@
     </head>
     <body id="bodyRegistro">
         <header id="headerRegistro">
-            <img id="logo">
+            <a href="index.jsp"><img id="logo"></a>
         </header>
         <nav id="navRegistro">
-            <a id="linkInicio" class="linksDelNav" href="index.jsp">INICIO</a>
         </nav>
         <br>
         <section id="sectionRegistro">

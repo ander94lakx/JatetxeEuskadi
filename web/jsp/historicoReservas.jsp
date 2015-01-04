@@ -10,10 +10,9 @@
         <%@page import="java.sql.*" %>
         <%@page import="java.util.*" %>
         <header id="headerHistorico">
-           <img id="logo">
+           <a href="index.jsp"><img id="logo"></a>
         </header>
         <nav id="navHistorico">
-            <a id="linkInicio" class="linksDelNav" href="index.jsp">INICIO</a>
             <% if(session.getAttribute("usuarioActual") == null) { %>
                 <a id="linkRegistro" class="linksDelNav" href="registro.jsp">REGISTRARSE</a>
                 <a id="linkLogin" class="linksDelNav" href="login.jsp">INICIAR SESION</a>

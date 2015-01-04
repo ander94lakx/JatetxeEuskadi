@@ -8,7 +8,7 @@
     </head>
     <body id="bodyIndex">
         <header id="headerIndex">
-           <img id="logo">
+           <a href="index.jsp"><img id="logo"></a>
         </header>
         <nav id="navIndex">
             <% if(session.getAttribute("usuarioActual") == null) { %>
