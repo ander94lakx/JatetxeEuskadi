@@ -71,13 +71,13 @@ public class ServletLogin extends HttpServlet {
                         String error = "No se ha podido loguear: la contraseña es incorrecta";
                         request.getSession(true).setAttribute("errorLogin", error);
 //                        request.getRequestDispatcher("login.jsp").forward(request, response);
-                        response.sendRedirect("jsp/logig.jsp");
+                        response.sendRedirect("jsp/login.jsp");
                     }
                 } else {
                     String error = "No se ha podido loguear: el usuario no esta registrado";
                     request.getSession(true).setAttribute("errorLogin", error);
 //                    request.getRequestDispatcher("login.jsp").forward(request, response);
-                    response.sendRedirect("jsp/logig.jsp");
+                    response.sendRedirect("jsp/login.jsp");
                 }               
             } catch(SQLException sql){
                 System.out.println("Se produjo un errror creando el Statement");
