@@ -71,6 +71,11 @@
                 </select><br><br>
                 <input type="submit" id="reservar" name="reservar" value="RESERVAR"><br><br>
             </form>
+            </fieldset>
+             </fieldset>
+            <iframe id="mapasRest" src="https://www.google.com/maps/embed?pb=!<%=coordenadas%>" 
+                       frameborder="0" style="border:0">         
+            </iframe>
         <%
             }
         %>
@@ -79,8 +84,7 @@
         <%
             session.setAttribute("estadoReserva", null);
             } 
-        %>
-            </fieldset>
+        %> 
         </section>
         <footer id="footerRestaurante">
             <br>

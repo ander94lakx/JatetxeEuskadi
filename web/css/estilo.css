@@ -415,7 +415,7 @@
         }
         
         #divRestaurantes{
-           margin-left: 30px;
+           margin-left: 50px;
            width: 300px;
            height: 300px;
            float: left;
@@ -427,12 +427,11 @@
             height: 200px;
         }
         
-        #localizacionRestaurante{
+        #mapas{
             float: left;
             width: 250px;
             height: 250px;
-            margin-left: 10px;
-                
+            margin-left: 20px;      
         }
         
         /* -------- RESTAURANTE--------- */
@@ -478,6 +477,13 @@
             background: #ffffff;
             border: solid 1px #666;
             font-size: 17px;
+        }
+        
+        #mapasRest{
+            float: left;
+            width: 300px;
+            height: 300px;
+            margin-left: 50px;
         }
         
         /* -------- HISTORICO--------- */

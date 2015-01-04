@@ -77,11 +77,9 @@
                 Dirección: <%=direccion%><br>
                 Ciudad: <%=ciudad%><br>
                 </div>
-                <div id="localizacionRestaurante">
-                    <iframe src="https://www.google.com/maps/embed?pb=!<%=coordenadas%>" 
-                        width="250" height="250" frameborder="0" style="border:0">         
-                    </iframe>
-                </div>
+                <iframe id="mapas" src="https://www.google.com/maps/embed?pb=!<%=coordenadas%>" 
+                       frameborder="0" style="border:0">         
+                </iframe>
         <%
                 }
             }
