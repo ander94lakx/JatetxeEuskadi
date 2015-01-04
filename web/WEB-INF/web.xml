@@ -20,6 +20,10 @@
         <servlet-name>ServletReserva</servlet-name>
         <servlet-class>packServlets.ServletReserva</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAnulacion</servlet-name>
+        <servlet-class>packServlets.ServletAnulacion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletRegistro</servlet-name>
         <url-pattern>/Registrarse</url-pattern>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>ServletReserva</servlet-name>
         <url-pattern>/Reservar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAnulacion</servlet-name>
+        <url-pattern>/Anular</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
