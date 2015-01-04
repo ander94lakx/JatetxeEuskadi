@@ -480,6 +480,7 @@
         }
         
         #mapasRest{
+            margin-top: 40px;
             float: left;
             width: 300px;
             height: 300px;
@@ -497,12 +498,12 @@
         #webHistorico{
             margin-top: 50px;
             margin-left:500px;
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
         }
         
         #cancelarReserva{
-            margin-left: 70px;
+            margin-left: 80px;
             height: 30px;
             width: 200px;
             color: #ffffff;
@@ -511,7 +512,7 @@
         }
         
         #cancelarReserva:hover{
-            margin-left: 70px;
+            margin-left: 80px;
             height: 30px;
             width: 200px;
             color: #00cc6f;
