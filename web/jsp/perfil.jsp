@@ -65,8 +65,8 @@
                     dia = rs.getInt("dia");
                     mes = rs.getInt("mes");
                     ano = rs.getInt("ano");
-                    if(rs.getString("direccion") != null)
-                        direccion = rs.getString("direccion");
+                    String dir = rs.getString("direccion");
+                    direccion = (dir != null) ? dir : "";
                     imagen = rs.getString("imagen");
                     contrasena = rs.getString("contrasena");
                 }
