@@ -459,3 +459,10 @@
             width: 300px;
             height: 500px;
         }
+        
+        #cajaHistorico{
+            margin-top: 40px;
+            margin-left: 550px;
+            width: 50px;
+            height: 40px;
+        }

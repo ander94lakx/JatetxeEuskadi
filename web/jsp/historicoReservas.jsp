@@ -85,6 +85,11 @@
             }
         %>
             </div>
+            <div id="cajaHistorico">
+                <form name="formuhistorico" id="formuhistorico" method="get">
+                    <input type="submit" value="CANCELAR RESERVA" name="cancelarReserva" />
+                </form>
+            </div>
         </section>
         <footer id="footerHistorico">
             <br>
