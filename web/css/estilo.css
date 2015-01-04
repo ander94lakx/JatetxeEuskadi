@@ -428,6 +428,14 @@
 /*            background-image: url("../img/Akelarre.jpg");*/
         }
         
+        #localizacionRestaurante{
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin-left: 10px;
+                
+        }
+        
         /* -------- RESTAURANTE--------- */
         
         #sectionRestaurante{
