@@ -24,6 +24,7 @@
         </nav>
         <section id="sectionHistorico">
             <div id="webHistorico">
+                <form name="formuhistorico" id="formuhistorico" method="get">
         <% 
             Connection conn;
             if(config.getServletContext().getAttribute("CONEXION") == null) {
@@ -75,19 +76,30 @@
                     }
                     %>
                     <td><%=estado%></td>
+                    <%
+                    if(cancelada) { %>
+                        <td><input type="radio" name="cancelar" disabled="disabled"</td>
+                    <%  
+                    } else {
+                        if(fechaActual.compareTo(fechaReservaUtil) > 0){ %>
+                            <td><input type="radio" name="cancelar" disabled="disabled"</td>
+                        <%
+                        } else{ %>
+                            <td><input type="radio" name="cancelar"</td>
+                        <%
+                        }
+                    }
+                    %>
                 </tr>
         <%
                 }
         %>
             </tbody>
-        </table>
+        </table><br><br>
         <%
             }
         %>
-            </div>
-            <div id="cajaHistorico">
-                <form name="formuhistorico" id="formuhistorico" method="get">
-                    <input type="submit" value="CANCELAR RESERVA" name="cancelarReserva" />
+        <input type="submit" value="CANCELAR RESERVA" name="cancelarReserva" />
                 </form>
             </div>
         </section>
