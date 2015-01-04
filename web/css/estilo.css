@@ -503,7 +503,7 @@
         }
         
         #cancelarReserva{
-            margin-left: 120px;
+            margin-left: 140px;
             height: 30px;
             width: 200px;
             color: #ffffff;
@@ -512,7 +512,7 @@
         }
         
         #cancelarReserva:hover{
-            margin-left: 120px;
+            margin-left: 140px;
             height: 30px;
             width: 200px;
             color: #00cc6f;
