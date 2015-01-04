@@ -143,6 +143,7 @@ public class ServletRegistro extends HttpServlet {
     
     private boolean insertarUsuarioBD() {
         Statement st = null;
+        Statement st2 = null;
         try{
             st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT email FROM Usuario");
@@ -151,9 +152,9 @@ public class ServletRegistro extends HttpServlet {
                 if(rs.getString("email").equals(email))
                     return false;
             }
-            
-            st.executeUpdate("INSERT INTO Usuario "
-                    + "(email,dni,sexo,nombre,apellido,provincia,ciudad,contrasena) VALUES " 
+            st2 = conn.createStatement();
+            st2.executeUpdate("INSERT INTO Usuario "
+                    + "(email,dni,sexo,nombre,apellido,provincia,ciudad,codigopostal,telefono,contrasena) VALUES " 
                     +"('"+email+"','"+dni+"','"+sexo+"','"+nombre+"','"+apellido+"','"
                     +provincia+"','"+ciudad+"','"+codigopostal+"','"+telefono+"','"+contrasena+"');");
             return true;
