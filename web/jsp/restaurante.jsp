@@ -41,6 +41,8 @@
             <% } %>
         </nav>
         <section id="sectionRestaurante">
+            <div id="webRestaurante">
+            <img id="imagenSection" src="../img/<%=restaurante%>.jpg">
         <%        
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM Restaurante WHERE nombre='"+restaurante+"';");
@@ -52,9 +54,9 @@
                 String coordenadas = rs.getString("coordenadas");
         
         %>
-            Restaurante: <%=nombre%> <br>
-            Dirección: <%=direccion%> <br>
-            Ciudad: <%=ciudad%> <br>
+            Restaurante: <%=nombre%> <br><br>
+            Dirección: <%=direccion%> <br><br>
+            Ciudad: <%=ciudad%> <br><br>
             <form name="reserva" id="reserva" method="post" action="../Reservar">
                 Personas: <input type="number" id="personas" name="personas" min="1" max="8"><br><br>
                 Fecha: <input type="date" name="fecha" id="fecha"><br><br>
@@ -75,6 +77,7 @@
             session.setAttribute("estadoReserva", null);
             } 
         %>
+            </div>
         </section>
         <footer id="footerRestaurante">
             <br>
