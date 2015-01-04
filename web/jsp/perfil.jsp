@@ -227,7 +227,7 @@
                     <!-- Pagina muy intersante sobre Google Maps Api Key
                             http://www.maestrosdelweb.com/trabajando-con-el-api-de-google-maps/ -->
                
-                            <input type="button" id="obtener" value="Obtener la localizaciÃ³n actual"> <br>
+                            <input type="button" id="obtener" value="Obtener la localización actual"> <br>
                             <div id="dato"></div><br><br>
                 </div>
         <% } else { %>
