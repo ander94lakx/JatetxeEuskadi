@@ -95,31 +95,31 @@ public class ServletRegistro extends HttpServlet {
         else
             existeError = true;
         
-        if(!request.getParameter("dia").equals(""))
-            dia = Short.parseShort(request.getParameter("dia"));
-        else
-            existeError = true;
-        
-        if(!request.getParameter("mes").equals(""))
-            mes = Short.parseShort(request.getParameter("mes"));
-        else
-            existeError = true;
-        
-        if(!request.getParameter("ano").equals(""))
-            ano = Short.parseShort(request.getParameter("ano"));
-        else
-            existeError = true;
-        
-        if(!request.getParameter("direccion").equals(""))
-            direccion = request.getParameter("direccion");
-        else
-            existeError = true;
-        
+//        if(!request.getParameter("dia").equals(""))
+//            dia = Short.parseShort(request.getParameter("dia"));
+//        else
+//            existeError = true;
+//        
+//        if(!request.getParameter("mes").equals(""))
+//            mes = Short.parseShort(request.getParameter("mes"));
+//        else
+//            existeError = true;
+//        
+//        if(!request.getParameter("ano").equals(""))
+//            ano = Short.parseShort(request.getParameter("ano"));
+//        else
+//            existeError = true;
+//        
+//        if(!request.getParameter("direccion").equals(""))
+//            direccion = request.getParameter("direccion");
+//        else
+//            existeError = true;
+//        
 //        if(!request.getParameter("cimagen").equals(""))
 //            imagen = request.getParameter("imagen");
 //        else
 //            existeError = true;
-//        
+        
         if(!request.getParameter("contrasena").equals(""))
             contrasena = obtenerHash(request.getParameter("contrasena"));
         else
@@ -144,16 +144,20 @@ public class ServletRegistro extends HttpServlet {
     private boolean insertarUsuarioBD() {
         Statement st = null;
         try{
-            st= conn.createStatement();
+            st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT email FROM Usuario");
-            if(rs.getString("email") == null) {
-                return false;
-            } else {
-                st.executeUpdate("INSERT INTO Usuario VALUES " + "('"+email+"','"+dni+"','"+sexo+"','"+nombre+"','"
-                    +apellido+"','"+provincia+"','"+ciudad+"','"+codigopostal+"','"+telefono+"','"
-                    +dia+"','"+mes+"','"+ano+"','"+direccion+"','"+imagen+"','"+contrasena+"')");
-                return true;
+            
+            while(rs.next()) {
+                if(rs.getString("email").equals(email))
+                    return false;
             }
+            
+            st.executeUpdate("INSERT INTO Usuario "
+                    + "(email,dni,sexo,nombre,apellido,provincia,ciudad,contrasena) VALUES " 
+                    +"('"+email+"','"+dni+"','"+sexo+"','"+nombre+"','"+apellido+"','"
+                    +provincia+"','"+ciudad+"','"+codigopostal+"','"+telefono+"','"+contrasena+"');");
+            return true;
+            
         } catch(SQLException sql){
             System.out.println("Se produjo un errror creando el Statement");
             System.out.println(sql.getMessage());
