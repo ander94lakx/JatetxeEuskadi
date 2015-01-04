@@ -17,10 +17,10 @@ function iniciar() {
 function validarDatos(e) {
     
     if (document.getElementById('registro').checkValidity()) {        
-        e.preventDefault();
-        if(!validarDNI()) {
-            alert("El DNI introducido no existe");
-        }
+//        e.preventDefault();
+//        if(!validarDNI()) {
+//            alert("El DNI introducido no existe");
+//        }
     }   
 }
 

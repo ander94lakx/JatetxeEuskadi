@@ -18,13 +18,13 @@ function iniciar() {
     
 function validarDatos(e) {
     if (document.getElementById('perfil').checkValidity()) {        
-        e.preventDefault();
-        if(!validarDNI()) {
-            alert("El DNI introducido no existe");
-        } else {
-            if(!validarFecha())
-                alert("La fecha seleccionada no existe");
-        }
+//        e.preventDefault();
+//        if(!validarDNI()) {
+//            alert("El DNI introducido no existe");
+//        } else {
+//            if(!validarFecha())
+//                alert("La fecha seleccionada no existe");
+//        }
     }   
 }
 
