@@ -59,7 +59,8 @@ public class ServletPerfil extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         boolean existeError = false;
-        if(!request.getParameter("email").equals(""))
+        String usu = (String) request.getSession(true).getAttribute("usuarioActual");
+        if(!usu.equals(""))
             email = request.getParameter("email");
         else
             existeError = true;
@@ -154,34 +155,30 @@ public class ServletPerfil extends HttpServlet {
         Statement st = null;
         Statement st2 = null;
         try{
-            st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT email FROM Usuario");
-            if(rs.getString("email") == null) {
-                return false;
-            } else {
-                st.executeUpdate("UPDATE Usuario SET dni='"+dni+"',"+
-                                                   "sexo='"+sexo+"',"+
-                                                   "nombre='"+nombre+"',"+
-                                                   "apellido='"+apellido+"',"+
-                                                   "provincia='"+provincia+"',"+
-                                                   "ciudad='"+ciudad+"',"+
-                                                   "codigopostal="+codigopostal+","+
-                                                   "telefono'"+telefono+","+
-                                                   "dia="+dia+","+
-                                                   "mes="+mes+","+
-                                                   "ano="+ano+","+
-                                                   "direccion='"+direccion+"',"+
-                                                   "imagen='"+imagen+"'"+
-                                "WHERE email='"+email+"';");
-                st2 = conn.createStatement();
-                ResultSet rs2 = st2.executeQuery("SELECT contrasena FROM Usuario WHERE email='"+email+"';");
-                if(rs2.next()) {
-                    if(rs2.getString("contrasena").equals(contrasena)) {
-                        st2.executeUpdate("UPDATE Usuario SET contrasena='"+obtenerHash(contrasena)+"' WHERE email='"+email+"';");
-                    }
+            st = conn.createStatement();          
+            st.executeUpdate("UPDATE Usuario SET dni='"+dni+"',"+
+                                               "sexo='"+sexo+"',"+
+                                               "nombre='"+nombre+"',"+
+                                               "apellido='"+apellido+"',"+
+                                               "provincia='"+provincia+"',"+
+                                               "ciudad='"+ciudad+"',"+
+                                               "codigopostal="+codigopostal+","+
+                                               "telefono'"+telefono+","+
+                                               "dia="+dia+","+
+                                               "mes="+mes+","+
+                                               "ano="+ano+","+
+                                               "direccion='"+direccion+"',"+
+                                               "imagen='"+imagen+"'"+
+                            "WHERE email='"+email+"';");
+            
+            st2 = conn.createStatement();
+            ResultSet rs2 = st2.executeQuery("SELECT contrasena FROM Usuario WHERE email='"+email+"';");
+            if(rs2.next()) {
+                if(!rs2.getString("contrasena").equals(contrasena)) {
+                    st2.executeUpdate("UPDATE Usuario SET contrasena='"+obtenerHash(contrasena)+"' WHERE email='"+email+"';");
                 }
-                return true;
             }
+            return true;
         } catch(SQLException sql){
             System.out.println("Se produjo un errror creando el Statement");
             System.out.println(sql.getMessage());
