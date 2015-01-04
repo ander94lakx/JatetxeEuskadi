@@ -445,15 +445,18 @@
         }
         
         #restauranteDatos{
-            margin-top: 40px;
-            margin-left: 30px;
+            margin-top: 80px;
+            margin-left: 50px;
             width: 500px;
             height: 500px;
             float: left;
+            border: 5px dashed gray;
+            border-radius: 8px;
+            
         }
         
         #reservar{
-            
+            margin-left: 20px;
             height: 30px;
             width: 150px;
             color: #ffffff;
@@ -462,7 +465,7 @@
         }
         
         #reservar:hover{
-            
+            margin-left: 20px;
             height: 30px;
             width: 150px;
             color: #00cc6f;
@@ -487,18 +490,18 @@
         }
         
         #cancelarReserva{
-            
+            margin-left: 20px;
             height: 30px;
-            width: 150px;
+            width: 200px;
             color: #ffffff;
             background: #00cc6f;
             border: solid 1px #666;
         }
         
         #cancelarReserva:hover{
-            
+            margin-left: 20px;
             height: 30px;
-            width: 150px;
+            width: 170px;
             color: #00cc6f;
             background: #ffffff;
             border: solid 1px #666;
