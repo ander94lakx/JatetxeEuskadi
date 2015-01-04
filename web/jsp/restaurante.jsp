@@ -46,7 +46,7 @@
             <div id="webRestaurante">
                 <img id="imagenSection" src="../img/<%=restaurante%>.jpg" height="400" width="400">
             </div>
-            <div id="restauranteDatos">
+            <fieldset id="restauranteDatos">
         <%        
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM Restaurante WHERE nombre='"+restaurante+"';");
@@ -81,7 +81,7 @@
             session.setAttribute("estadoReserva", null);
             } 
         %>
-            </div>
+            </fieldset>
         </section>
         <footer id="footerRestaurante">
             <br>

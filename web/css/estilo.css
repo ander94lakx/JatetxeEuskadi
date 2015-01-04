@@ -447,8 +447,8 @@
         #restauranteDatos{
             margin-top: 80px;
             margin-left: 50px;
-            width: 500px;
-            height: 500px;
+            width: 400px;
+            height: 400px;
             float: left;
             border: 5px dashed gray;
             border-radius: 8px;
@@ -501,7 +501,7 @@
         #cancelarReserva:hover{
             margin-left: 20px;
             height: 30px;
-            width: 170px;
+            width: 200px;
             color: #00cc6f;
             background: #ffffff;
             border: solid 1px #666;
