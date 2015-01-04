@@ -66,7 +66,7 @@
                     <option selected value="2100">21:00</option>
                     <option value="2130">21:30</option>
                     <option value="2200">22:00</option>
-                    <option value="2230">22:00</option>
+                    <option value="2230">22:30</option>
                 </select><br><br>
                 <input type="submit" id="reservar" name="reservar" value="RESERVAR"><br><br>
             </form>
