@@ -64,10 +64,9 @@ public class ServletReserva extends HttpServlet {
         else
             existeError = true;
          
-        if(!request.getParameter("hora").equals("")) {
-            String temp = request.getParameter("hora");
-            hora = temp.charAt(0) + temp.charAt(1) + ":" + temp.charAt(2) + temp.charAt(3);
-        }
+        if(!request.getParameter("hora").equals(""))
+            hora = request.getParameter("hora");
+
         else
             existeError = true;
         
@@ -140,11 +139,12 @@ public class ServletReserva extends HttpServlet {
                 if(saldo > 10.0f) {
                     // Hay saldo para realizar la reserva
                     Statement st5 = conn.createStatement();
-                    st5.executeUpdate("INSERT INTO Reserva VALUES('"+restaurante+"','"+usuario+"',datevalue('"+fecha+"'),'"+hora+"',0,"+numDeMesasAReservar+");");
+                    st5.executeUpdate("INSERT INTO Reserva (restaurante,usuario,fecha,mesasreservadas,hora) "
+                            + "VALUES('"+restaurante+"','"+usuario+"',datevalue('"+fecha+"'),"+numDeMesasAReservar+",'"+hora+"');");
                     
                     st5.executeUpdate("UPDATE Saldos SET saldo=saldo-10 WHERE dni='"+dni+"';");
                     
-                    String msg = "Reserva realizada para las: "+hora+" de "+fecha+". Saldo restante en su cuenta: "+(saldo-10);
+                    String msg = "Reserva realizada para las: "+hora+" del dia "+fecha+". Saldo restante en su cuenta: "+(saldo-10)+" euros.";
                     System.out.println(msg);
                     request.getSession(true).setAttribute("estadoReserva", msg);
                     response.sendRedirect("jsp/restaurante.jsp?restaurante="+restaurante);

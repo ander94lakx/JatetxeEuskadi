@@ -64,10 +64,10 @@
                 Personas: <input type="number" id="personas" name="personas" min="1" max="8"><br><br>
                 Fecha: <input type="date" name="fecha" id="fecha"><br><br>
                 Hora: <select name="hora" id="hora">
-                    <option selected value="2100">21:00</option>
-                    <option value="2130">21:30</option>
-                    <option value="2200">22:00</option>
-                    <option value="2230">22:30</option>
+                    <option selected value="21:00">21:00</option>
+                    <option value="21:30">21:30</option>
+                    <option value="22:00">22:00</option>
+                    <option value="22:30">22:30</option>
                 </select><br><br>
                 <input type="submit" id="reservar" name="reservar" value="RESERVAR"><br><br>
             </form>
