@@ -83,24 +83,16 @@ public class ServletReserva extends HttpServlet {
             existeError = true;
         
         if(!existeError) {
-            if(realizarReserva()) {
-                System.out.println("Reserva realizada correctamente");
-                request.getSession(true).setAttribute("estadoReserva", "Reserva realizada correctamente");
-//                request.getRequestDispatcher("/jsp/restaurante.jsp").forward(request, response);
-                response.sendRedirect("jsp/restaurante.jsp?restaurante="+restaurante);
-            } else {
-                System.out.println("Reserva no realizada");
-                request.getSession(true).setAttribute("estadoReserva", "Reserva no realizada");
-//                request.getRequestDispatcher("/jsp/restaurante.jsp").forward(request, response);
-                response.sendRedirect("jsp/restaurante.jsp?restaurante="+restaurante);
-            }
+            realizarReserva(request,response);
         }
         else
             System.out.println("Error al recibir los parametros");
         
     }
     
-    private boolean realizarReserva() {
+    private void realizarReserva(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        
         int mesasReservadas = 0;
         int tamanoMesa = 0;
         int numDeMesasAReservar = 0;
@@ -119,7 +111,7 @@ public class ServletReserva extends HttpServlet {
             }
             
             Statement st2 = conn.createStatement();
-            ResultSet rs2 = st2.executeQuery("SELECT nummesas, numasientos FROM Restaurante WHERE restaurante='"+restaurante+"';");
+            ResultSet rs2 = st2.executeQuery("SELECT nummesas, numasientos FROM Restaurante WHERE nombre='"+restaurante+"';");
             
             while(rs2.next()) {
                 numDeMesasTotales = rs2.getInt("nummesas");
@@ -148,18 +140,30 @@ public class ServletReserva extends HttpServlet {
                 if(saldo > 10.0f) {
                     // Hay saldo para realizar la reserva
                     Statement st5 = conn.createStatement();
-//                    st5.executeUpdate("INSERT INTO Reserva VALUES('"+restaurante"','"+usuario+"',datevalue('"+fecha+"'),'"+hora+"',false,"+numDeMesasAReservar+");");
+                    st5.executeUpdate("INSERT INTO Reserva VALUES('"+restaurante+"','"+usuario+"',datevalue('"+fecha+"'),'"+hora+"',0,"+numDeMesasAReservar+");");
+                    
                     st5.executeUpdate("UPDATE Saldos SET saldo=saldo-10 WHERE dni='"+dni+"';");
+                    
+                    String msg = "Reserva realizada para las: "+hora+" de "+fecha+". Saldo restante en su cuenta: "+(saldo-10);
+                    System.out.println(msg);
+                    request.getSession(true).setAttribute("estadoReserva", msg);
+                    response.sendRedirect("jsp/restaurante.jsp?restaurante="+restaurante);
+                    
+                } else {
+                    System.out.println("Reserva NO realizada, no hay saldo suficiente en su cuenta");
+                    request.getSession(true).setAttribute("estadoReserva", "Reserva NO realizada, no hay saldo suficiente en su cuenta");
+                    response.sendRedirect("jsp/restaurante.jsp?restaurante="+restaurante);
                 }
-            } else 
-                return false;
+            } else {
+                System.out.println("Reserva NO realizada, no hay espacio suficiente en el restaurante");
+                request.getSession(true).setAttribute("estadoReserva", "\"Reserva NO realizada, no hay espacio suficiente en el restaurante");
+                response.sendRedirect("jsp/restaurante.jsp?restaurante="+restaurante);
+            }
             
             
         } catch (SQLException ex) {
             Logger.getLogger(ServletReserva.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        return false;
     }
 
     @Override
