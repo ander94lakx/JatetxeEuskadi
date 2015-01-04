@@ -71,7 +71,7 @@
                     String coordenadas = rs.getString("coordenadas");
         %>
         <div id="divRestaurantes">
-            <div id="imagenRest">
+            <img id="imagenRest" src="../img/<%=nombre%>.jpg">
                 
             </div>
         <a href="restaurante.jsp?restaurante=<%=nombre%>"><%=nombre%></a><br>
