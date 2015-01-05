@@ -487,6 +487,14 @@
             margin-left: 50px;
         }
         
+        #mensajeReserva{
+            margin-top: 200px;
+            margin-left: 30px;
+            width: 100px;
+            height: 70px;
+            border: 3px;
+        }
+        
         /* -------- HISTORICO--------- */
         
         #sectionHistorico{

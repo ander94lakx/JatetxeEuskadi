@@ -80,7 +80,9 @@
             }
         %>
         <% if(session.getAttribute("estadoReserva") != null) { %>
+        <div id="mensajeReserva">
             <label class="mensajesDeError"><%= (String) session.getAttribute("estadoReserva")%></label>
+        </div>
         <%
             session.setAttribute("estadoReserva", null);
             } 
