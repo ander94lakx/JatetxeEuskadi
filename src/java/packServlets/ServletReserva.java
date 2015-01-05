@@ -78,8 +78,10 @@ public class ServletReserva extends HttpServlet {
         
         if(request.getSession(true).getAttribute("usuarioActual") != null) {
             usuario = (String) request.getSession(true).getAttribute("usuarioActual");
-        } else
+        } else {
             existeError = true;
+            response.sendRedirect("jsp/login.jsp");
+        }
         
         if(!existeError) {
             realizarReserva(request,response);
