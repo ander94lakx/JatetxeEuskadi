@@ -24,6 +24,8 @@
                     <fieldset id="fieldsetRegistro">
                         <form name="registro" id="registro" method="post" action="../Registrarse">
 
+                            <input type="hidden" id="imagenInput" name="imagenInput">
+                            
                             <label class="camposDeReg">Eres: *</label>
                             <input type="radio" name="sexo" id="h" value="hombre" required="required">Hombre
                             <input type="radio" name="sexo" id="m" value="mujer">Mujer<br><br>

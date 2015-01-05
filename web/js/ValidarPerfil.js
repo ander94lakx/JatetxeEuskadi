@@ -14,6 +14,9 @@ function iniciar() {
     // Validacion en tiempo real
     document.perfil.addEventListener("invalid", validacion, true);
     document.perfil.addEventListener("input", controlar, false);
+    
+    imagen = document.getElementById("imagenInput").value;
+    document.getElementById('caja').style.backgroundImage = "url('" + imagen + "')";
 }
     
 function validarDatos(e) {
@@ -103,6 +106,7 @@ function cargar(e) {
     arch.readAsDataURL(e.target.files[0]);
     arch.onloadend = function () {
         imagen = arch.result;
+        document.getElementById("imagenInput").value = imagen;
         console.log(imagen);
     }
 }
@@ -118,6 +122,7 @@ function drop(e) {
     arch.readAsDataURL(e.dataTransfer.files[0]);
     arch.onloadend = function () {
         imagen = arch.result;
+        document.getElementById("imagenInput").value = imagen;
         console.log(imagen);
     };
 }

@@ -18,10 +18,6 @@ public class ServletRegistro extends HttpServlet {
     String ciudad = "";
     int codigopostal = 0;
     int telefono = 0;
-    short dia = 0;
-    short mes = 0;
-    short ano = 0;
-    String direccion = "";
     String imagen = "";
     String contrasena = "";
     
@@ -95,53 +91,24 @@ public class ServletRegistro extends HttpServlet {
         else
             existeError = true;
         
-//        if(!request.getParameter("dia").equals(""))
-//            dia = Short.parseShort(request.getParameter("dia"));
-//        else
-//            existeError = true;
-//        
-//        if(!request.getParameter("mes").equals(""))
-//            mes = Short.parseShort(request.getParameter("mes"));
-//        else
-//            existeError = true;
-//        
-//        if(!request.getParameter("ano").equals(""))
-//            ano = Short.parseShort(request.getParameter("ano"));
-//        else
-//            existeError = true;
-//        
-//        if(!request.getParameter("direccion").equals(""))
-//            direccion = request.getParameter("direccion");
-//        else
-//            existeError = true;
-//        
-//        if(!request.getParameter("cimagen").equals(""))
-//            imagen = request.getParameter("imagen");
-//        else
-//            existeError = true;
+        if(!request.getParameter("imagenInput").equals("")) {
+            imagen = request.getParameter("imagenInput");
+            System.out.println(imagen);
+        }
         
         if(!request.getParameter("contrasena").equals(""))
             contrasena = obtenerHash(request.getParameter("contrasena"));
         else
             existeError = true;
         
-        if(!existeError) {
-            if(insertarUsuarioBD()){
-//                request.getRequestDispatcher("index.jsp").forward(request, response);
-                response.sendRedirect("jsp/index.jsp");
-            } else {
-                String error = "Error al registrar al ususario: ya existe un uuario con el mismo email";
-                request.getSession(true).setAttribute("errorRegistro", error);
-//                request.getRequestDispatcher("registro.jsp").forward(request, response);
-                response.sendRedirect("jsp/registro.jsp");
-            }
-            
-        }
+        if(!existeError)
+            insertarUsuarioBD(request,response);
         else
             System.out.println("Se ha producido un error");
     }
     
-    private boolean insertarUsuarioBD() {
+    private void insertarUsuarioBD(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         Statement st = null;
         Statement st2 = null;
         try{
@@ -149,21 +116,25 @@ public class ServletRegistro extends HttpServlet {
             ResultSet rs = st.executeQuery("SELECT email FROM Usuario");
             
             while(rs.next()) {
-                if(rs.getString("email").equals(email))
-                    return false;
+                if(rs.getString("email").equals(email)) {
+                    String error = "Error al registrar al ususario: ya existe un uuario con el mismo email";
+                    request.getSession(true).setAttribute("errorRegistro", error);
+//                  request.getRequestDispatcher("registro.jsp").forward(request, response);
+                    response.sendRedirect("jsp/registro.jsp");
+                }
             }
             st2 = conn.createStatement();
             st2.executeUpdate("INSERT INTO Usuario "
                     + "(email,dni,sexo,nombre,apellido,provincia,ciudad,codigopostal,telefono,contrasena) VALUES " 
                     +"('"+email+"','"+dni+"','"+sexo+"','"+nombre+"','"+apellido+"','"
                     +provincia+"','"+ciudad+"','"+codigopostal+"','"+telefono+"','"+contrasena+"');");
-            return true;
+            
+            response.sendRedirect("jsp/index.jsp");
             
         } catch(SQLException sql){
             System.out.println("Se produjo un errror creando el Statement");
             System.out.println(sql.getMessage());
         }
-        return false;
     }
     
     private String obtenerHash(String cadena) {

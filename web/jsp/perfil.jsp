@@ -79,7 +79,9 @@
                 <div id="divPerfil">
                     <fieldset id="fieldsetPerfil">
                         <form name="perfil" id="perfil" method="post" action="../ModificarPerfil">
-
+                            
+                            <input type="hidden" id="imagenInput" name="imagenInput">
+                            
                             <label class="camposDeReg">Eres: *</label>
                             <% if(sexo.equals("h")) { %>
                                 <input type="radio" name="sexo" id="h" value="hombre" required="required" checked="checked">Hombre

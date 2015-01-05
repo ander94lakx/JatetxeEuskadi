@@ -125,10 +125,10 @@ public class ServletPerfil extends HttpServlet {
         else
             existeError = true;
         
-        if(!request.getParameter("cimagen").equals(""))
-            imagen = request.getParameter("imagen");
-        else
-            existeError = true;
+        if(!request.getParameter("imagenInput").equals("")) {
+            imagen = request.getParameter("imagenInput");
+            System.out.println(imagen);
+        }
         
         if(!request.getParameter("contrasena").equals(""))
             contrasena = request.getParameter("contrasena");
@@ -167,9 +167,9 @@ public class ServletPerfil extends HttpServlet {
                                                "dia="+dia+","+
                                                "mes="+mes+","+
                                                "ano="+ano+","+
-                                               "direccion='"+direccion+"',"+
-                                               "imagen='"+imagen+"'"+
-                            "WHERE email='"+email+"';");
+                                               "direccion='"+direccion+"'"+
+                                               "',"+"imagen='"+imagen+"'"+
+                            " WHERE email='"+email+"';");
             
             st2 = conn.createStatement();
             ResultSet rs2 = st2.executeQuery("SELECT contrasena FROM Usuario WHERE email='"+email+"';");
