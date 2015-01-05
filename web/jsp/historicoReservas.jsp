@@ -25,7 +25,7 @@
         </nav>
         <section id="sectionHistorico">
             <div id="webHistorico">
-                <form name="formuhistorico" id="formuhistorico" method="get">
+                <form name="formuhistorico" id="formuhistorico" method="get" action="../Anular">
         <% 
             Connection conn;
             if(config.getServletContext().getAttribute("CONEXION") == null) {
@@ -64,6 +64,7 @@
                     String hora = rs.getString("hora");
                     String estado = null;
                     int numMesas = rs.getInt("mesasreservadas");
+                    String valueBoton = usu + " " + fecha + " " + restaurante;
 
         %>
                 <tr>
@@ -92,7 +93,7 @@
                             <td><input type="radio" name="cancelar" disabled="disabled"</td>
                         <%
                         } else{ %>
-                            <td><input type="radio" name="cancelar"</td>
+                            <td><input type="radio" name="cancelar" value="<%=valueBoton%>"</td>
                         <%
                         }
                     }
@@ -107,7 +108,13 @@
             }
         %>
         <input type="submit" value="CANCELAR RESERVA" name="cancelarReserva" id="cancelarReserva"/>
-                </form>
+                </form><br>
+                <% if(session.getAttribute("estadoAnulacion") != null) { %>
+                    <label class="mensajesDeError"><%= (String) session.getAttribute("estadoAnulacion")%></label>
+                <%
+                    session.setAttribute("estadoAnulacion", null);
+                    } 
+                %> 
             </div>
         </section>
         <footer id="footerHistorico">
