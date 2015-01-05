@@ -81,6 +81,7 @@ public class ServletReserva extends HttpServlet {
         } else {
             existeError = true;
             response.sendRedirect("jsp/login.jsp");
+            return;
         }
         
         if(!existeError) {
