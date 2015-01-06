@@ -61,7 +61,7 @@ public class ServletPerfil extends HttpServlet {
         boolean existeError = false;
         String usu = (String) request.getSession(true).getAttribute("usuarioActual");
         if(!usu.equals(""))
-            email = request.getParameter("email");
+            email = usu;
         else
             existeError = true;
         
@@ -163,12 +163,12 @@ public class ServletPerfil extends HttpServlet {
                                                "provincia='"+provincia+"',"+
                                                "ciudad='"+ciudad+"',"+
                                                "codigopostal="+codigopostal+","+
-                                               "telefono'"+telefono+","+
+                                               "telefono="+telefono+","+
                                                "dia="+dia+","+
                                                "mes="+mes+","+
                                                "ano="+ano+","+
                                                "direccion='"+direccion+"'"+
-                                               "',"+"imagen='"+imagen+"'"+
+//                                               ","+"imagen='"+imagen+"'"+
                             " WHERE email='"+email+"';");
             
             st2 = conn.createStatement();
