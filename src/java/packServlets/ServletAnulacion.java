@@ -112,7 +112,7 @@ public class ServletAnulacion extends HttpServlet {
             st2 = conn.createStatement();
             st.executeUpdate("UPDATE Saldos SET saldo="+saldoRestante+" WHERE dni=(SELECT dni FROM Usuario WHERE email='"+usuario+"')");
             
-            String msg = "Anulacion realizada, saldo restante: "+saldoRestante;
+            String msg = "Anulacion realizada, saldo restante: "+saldoRestante+" euros.";
             System.out.println(msg);
             request.getSession(true).setAttribute("estadoAnulacion", msg);
             response.sendRedirect("jsp/historicoReservas.jsp");         
