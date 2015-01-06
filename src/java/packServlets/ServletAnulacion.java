@@ -2,6 +2,7 @@ package packServlets;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletConfig;
@@ -80,22 +81,42 @@ public class ServletAnulacion extends HttpServlet {
         System.out.println("fecha: "+fecha);
         System.out.println("restaurante: "+restaurante);
         
-        Statement st;
+        Statement st, st2, st3;
         try {
             st = conn.createStatement();
-            int canc = st.executeUpdate("UPDATE Reserva SET cancelada=1 WHERE restaurante='"+restaurante+"' and usuario='"+usuario+"' and fecha=datevalue('"+fecha+"');");
+            st.executeUpdate("UPDATE Reserva SET cancelada=1 WHERE restaurante='"+restaurante+"' and usuario='"+usuario+"' and fecha=datevalue('"+fecha+"');");
             
-            if(i == 1) {
-                System.out.println("Anulacion realizada");
-                request.getSession(true).setAttribute("estadoAnulacion", "Anulacion realizada");
-                response.sendRedirect("jsp/historicoReservas.jsp");
-            } else {
-                System.out.println("Anulacion NO realizada");
-                request.getSession(true).setAttribute("estadoAnulacion", "Anulacion NO realizada");
-                response.sendRedirect("jsp/historicoReservas.jsp");
-            }
+            float precioASumar = 0;
+            int ano = Integer.parseInt(fecha.substring(0, 4));
+            int mes = Integer.parseInt(fecha.substring(5, 7));
+            int dia = Integer.parseInt(fecha.substring(8, 10));
             
+            java.util.Date fechaActual = new java.util.Date();
+            java.util.Date fechaDeLaReserva = new java.util.Date(ano, mes-1, dia);
             
+            long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000;
+            long diferenciaDias = ( fechaDeLaReserva.getTime() - fechaActual.getTime() )/ MILLSECS_PER_DAY;
+            
+            if(diferenciaDias >= 2)
+                precioASumar = 10;
+            else if(diferenciaDias >= 1)
+                precioASumar = 6.6f;
+            
+            st2 = conn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT saldo FROM Saldos WHERE dni=(SELECT dni FROM Usuario WHERE email='"+usuario+"')");
+            
+            float saldoRestante = 0;
+            if(rs.next())
+                saldoRestante = rs.getFloat("saldo") + precioASumar;
+                
+            st2 = conn.createStatement();
+            st.executeUpdate("UPDATE Saldos SET saldo="+saldoRestante+" WHERE dni=(SELECT dni FROM Usuario WHERE email='"+usuario+"')");
+            
+            String msg = "Anulacion realizada, saldo restante: "+saldoRestante;
+            System.out.println(msg);
+            request.getSession(true).setAttribute("estadoAnulacion", msg);
+            response.sendRedirect("jsp/historicoReservas.jsp");         
+         
         } catch (SQLException ex) {
             Logger.getLogger(ServletAnulacion.class.getName()).log(Level.SEVERE, null, ex);
         }
