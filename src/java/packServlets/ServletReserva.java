@@ -125,6 +125,19 @@ public class ServletReserva extends HttpServlet {
             if(personas % tamanoMesa != 0)
                 numDeMesasAReservar++;
             
+            int ano = Integer.parseInt(fecha.substring(0, 4));
+            int mes = Integer.parseInt(fecha.substring(5, 7));
+            int dia = Integer.parseInt(fecha.substring(8, 10));
+            
+            java.util.Date fechaActual = new java.util.Date();
+            java.util.Date fechaDeLaReserva = new java.util.Date(ano, mes-1, dia);
+            
+            if( fechaDeLaReserva.getTime() < fechaActual.getTime() ) {
+                System.out.println("Reserva NO realizada, introducida fecha ya pasada");
+                request.getSession(true).setAttribute("estadoReserva", "Reserva NO realizada, introducida fecha ya pasada");
+                response.sendRedirect("jsp/restaurante.jsp?restaurante="+restaurante);
+            }
+            
             if(numDeMesasAReservar + mesasReservadas <= numDeMesasTotales) {
                 // Hay espacio para reservar en ese restaurante
                 Statement st3 = conn.createStatement();
