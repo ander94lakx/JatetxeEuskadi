@@ -130,7 +130,7 @@ public class ServletReserva extends HttpServlet {
             int dia = Integer.parseInt(fecha.substring(8, 10));
             
             java.util.Date fechaActual = new java.util.Date();
-            java.util.Date fechaDeLaReserva = new java.util.Date(ano, mes-1, dia);
+            java.util.Date fechaDeLaReserva = new java.util.Date(ano-1900, mes-1, dia);
             
             if( fechaDeLaReserva.getTime() < fechaActual.getTime() ) {
                 System.out.println("Reserva NO realizada, introducida fecha ya pasada");
