@@ -7,7 +7,7 @@ Esta aplicación es una web de reserva de restaurantes programada con HTML5, CSS
 
 Para mas información:
 
-Ander Granado: agranado003@ikasle.ehu.es, andergranado@outlook.com
+Ander Granado: agranado003@ikasle.ehu.es, andergranado94@gmail.com
 
 Julen Aristimuño: jaristimuno001@ikasle.ehu.es
 
@@ -19,6 +19,6 @@ Aplikazio hau jatexte reserbatzeko web orri bat da HTML5, CSS3 eta JS bezeroaren
 
 Informazio gehiagorako:
 
-Ander Granado: agranado003@ikasle.ehu.es, andergranado@outlook.com
+Ander Granado: agranado003@ikasle.ehu.es, andergranado94@gmail.com
 
 Julen Aristimuño: jaristimuno001@ikasle.ehu.es
